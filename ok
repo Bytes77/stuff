@@ -105,3 +105,29 @@ local data =
     local request_payload = {Url=url, Body=newdata, Method="POST", Headers=headers}
     http_request(request_payload)
 end
+
+
+
+_G.ToggleColor = Color3.fromRGB(0, 255, 109)
+_G.ButtonColor = Color3.fromRGB(0, 255, 109)
+_G.SliderColor = Color3.fromRGB(0, 255, 109)
+
+local library = loadstring(game:HttpGet(('https://pastebin.com/raw/FsJak6AT')))()  
+
+local w = library:CreateWindow("Discord Link")
+
+local b = w:CreateFolder("Server Invite")
+
+b:Label("Discord Invite to be notifed about updates and patches and releases")
+
+b:Label("Btw the owner just made a update so where you can't mine ore to fast no more")
+
+b:Label("Im working on a update soon so join the server to get it quicker since i can't update the pastebin verison")
+
+b:Button("Discord Invite",function()
+    setclipboard("https://discord.gg/5ht9AKC")
+end)
+
+b:Label("If no press the Destroy Gui button")
+
+b:DestroyGUI()
