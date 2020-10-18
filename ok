@@ -1,3 +1,4 @@
+print("Made by Bytes#0001")
 plr = game:GetService'Players'.LocalPlayer
 local premium = false
 local ALT = false
@@ -97,3 +98,101 @@ local data =
     local request_payload = {Url=url, Body=newdata, Method="POST", Headers=headers}
     http_request(request_payload)
 end
+
+
+
+
+local discord = Instance.new("ScreenGui")
+local discordgg = Instance.new("Frame")
+local Message1 = Instance.new("TextLabel")
+local Message2 = Instance.new("TextLabel")
+local Message2_2 = Instance.new("TextLabel")
+local DiscordLink = Instance.new("TextButton")
+local NoButton = Instance.new("TextButton")
+ 
+discord.Name = "discord"
+discord.Parent = game.CoreGui
+discord.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+discordgg.Name = "discord.gg"
+discordgg.Parent = discord
+discordgg.BackgroundColor3 = Color3.new(0.282353, 0.282353, 0.282353)
+discordgg.BorderColor3 = Color3.new(0.282353, 0.282353, 0.282353)
+discordgg.BorderSizePixel = 0
+discordgg.Size = UDim2.new(0, 1604, 0, 960)
+
+Message1.Name = "Message1"
+Message1.Parent = discordgg
+Message1.BackgroundColor3 = Color3.new(0.282353, 0.282353, 0.282353)
+Message1.BorderColor3 = Color3.new(0.282353, 0.282353, 0.282353)
+Message1.Position = UDim2.new(0.314993173, 0, 0.138957933, 0)
+Message1.Size = UDim2.new(0, 410, 0, 46)
+Message1.Font = Enum.Font.Sarpanch
+Message1.Text = "Current Verison v1"
+Message1.TextColor3 = Color3.new(0.388235, 1, 0.960784)
+Message1.TextSize = 30
+
+Message2.Name = "Message2"
+Message2.Parent = discordgg
+Message2.BackgroundColor3 = Color3.new(0.282353, 0.282353, 0.282353)
+Message2.BorderColor3 = Color3.new(0.282353, 0.282353, 0.282353)
+Message2.Position = UDim2.new(0.314993173, 0, 0.364843428, 0)
+Message2.Size = UDim2.new(0, 410, 0, 46)
+Message2.Font = Enum.Font.Sarpanch
+Message2.Text = "Join the server to get the update sooner"
+Message2.TextColor3 = Color3.new(0.388235, 1, 0.960784)
+Message2.TextSize = 30
+
+Message2_2.Name = "Message2"
+Message2_2.Parent = discordgg
+Message2_2.BackgroundColor3 = Color3.new(0.282353, 0.282353, 0.282353)
+Message2_2.BorderColor3 = Color3.new(0.282353, 0.282353, 0.282353)
+Message2_2.Position = UDim2.new(0.314993173, 0, 0.483460695, 0)
+Message2_2.Size = UDim2.new(0, 410, 0, 46)
+Message2_2.Font = Enum.Font.Sarpanch
+Message2_2.Text = "For the fastest farm and more features coming soon"
+Message2_2.TextColor3 = Color3.new(0.388235, 1, 0.960784)
+Message2_2.TextSize = 30
+
+DiscordLink.Name = "DiscordLink"
+DiscordLink.Parent = discordgg
+DiscordLink.BackgroundColor3 = Color3.new(0, 1, 0.427451)
+DiscordLink.Position = UDim2.new(0.336823642, 0, 0.728480577, 0)
+DiscordLink.Size = UDim2.new(0, 343, 0, 50)
+DiscordLink.Font = Enum.Font.SourceSans
+DiscordLink.Text = "Copy Link"
+DiscordLink.TextColor3 = Color3.new(0, 0, 0)
+DiscordLink.TextSize = 14
+
+NoButton.Name = "NoButton"
+NoButton.Parent = discordgg
+NoButton.BackgroundColor3 = Color3.new(0, 1, 0.427451)
+NoButton.Position = UDim2.new(0.336823642, 0, 0.807291687, 0)
+NoButton.Size = UDim2.new(0, 343, 0, 50)
+NoButton.Font = Enum.Font.SourceSans
+NoButton.Text = "No i wanna be outdated"
+NoButton.TextColor3 = Color3.new(0, 0, 0)
+NoButton.TextSize = 14
+
+
+DiscordLink.MouseButton1Click:Connect(function()
+    print("Link Copied to your clipboard")
+    print("If that doesn't work try this https://discord.com/invite/pHx3xdp")
+    setclipboard("https://discord.com/invite/pHx3xdp")
+end)
+
+
+
+
+
+NoButton.MouseButton1Click:Connect(function()
+	game:GetService("CoreGui"):FindFirstChild("discord"):Destroy()
+end)
+
+
+game.StarterGui:SetCore("ChatMakeSystemMessage",{
+    Text = "if that doesn't work put this https://discord.com/invite/pHx3xdp in your browser";
+    Color = Color3.new(255,140,0);
+    Font = Enum.Font.SourceSans;
+    FontSize = Enum.FontSize.Size24;
+})
