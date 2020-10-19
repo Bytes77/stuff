@@ -116,3 +116,6 @@ game.StarterGui:SetCore("ChatMakeSystemMessage",{
    
    setclipboard("https://discord.gg/pHx3xdp")
    print("https://discord.gg/pHx3xdp")
+   
+   game.Players.LocalPlayer:kick("New Script Check Out https://pastebin.com/fSeE8eLU to get the script or join the discord server")
+   
