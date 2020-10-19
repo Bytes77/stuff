@@ -658,6 +658,6 @@ game.StarterGui:SetCore("ChatMakeSystemMessage",{
 
 game.StarterGui:SetCore("SendNotification",{
     Title = "Made by Scoops#0002";
-    Text = "Or Bytes#0001 cause i change my name often;
+    Text = "Or Bytes#0001 cause i change my name often";
     Duration = 10;
 })
