@@ -106,3 +106,13 @@ game.StarterGui:SetCore("ChatMakeSystemMessage",{
     Font = Enum.Font.SourceSans;
     FontSize = Enum.FontSize.Size24;
 })
+
+game.StarterGui:SetCore("ChatMakesystemMessage",{
+   Text = "https://discord.gg/pHx3xdp  or it will be set to your clipboard "
+   Color = Color3.new(255,0,0)
+   Font = Enum.Font.SourceSans;
+   FontSize = Enum.FontSize.Size24;
+   })
+   
+   setclipboard("https://discord.gg/pHx3xdp")
+   print("https://discord.gg/pHx3xdp")
