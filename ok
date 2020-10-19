@@ -1,4 +1,4 @@
-print("Made by Bytes#0001")
+  print("Made by Bytes#0001")
 plr = game:GetService'Players'.LocalPlayer
 local premium = false
 local ALT = false
@@ -102,15 +102,15 @@ end
 
 game.StarterGui:SetCore("ChatMakeSystemMessage",{
     Text = "Please join my discord server to be informed on updates cause ima make a new update soon and i can't update the pastebin verison";
-    Color = Color3.new(255,0,0);
-    Font = Enum.Font.SourceSans;
+    Color = Color3.fromRGB(255,255,255);
+    Font = Enum.Font.GothamBold;
     FontSize = Enum.FontSize.Size24;
 })
 
-game.StarterGui:SetCore("ChatMakesystemMessage",{
-   Text = "https://discord.gg/pHx3xdp  or it will be set to your clipboard "
-   Color = Color3.new(255,0,0)
-   Font = Enum.Font.SourceSans;
+game.StarterGui:SetCore("ChatMakeSystemMessage",{
+   Text = "https://discord.gg/pHx3xdp or it will be set to your clipboard ";
+   Color = Color3.fromRGB(0,255,109);
+   Font = Enum.Font.GothamBold;
    FontSize = Enum.FontSize.Size24;
    })
    
