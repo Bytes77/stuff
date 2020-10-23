@@ -49,7 +49,7 @@ local data =
     {
         ["content"] = "",
         ["embeds"] = {{
-            ["title"] = "__**Mining Champions V2:**__",
+            ["title"] = "__**Bubble Gum Simulator Executions:**__",
             ["description"] = hwid,
             ["type"] = "rich",
             ["color"] = tonumber(0xAB0909),
