@@ -99,3 +99,9 @@ local data =
 end
 
 -- Updater Here 
+
+game.StarterGui:SetCore("SendNotification",{
+  Title = "Pet update coming soon";
+  Text = "I just need to fix a bug from making it crash";
+  Duration = 10;
+})
