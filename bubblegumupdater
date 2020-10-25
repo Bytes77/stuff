@@ -408,18 +408,4 @@ end)
  
 print("Anti afk has ran")
 
-
-game.StarterGui:SetCore("ChatMakeSystemMessage",{
-    Text = "Make sure to join the discord server for further updates";
-    Color = Color3.fromRGB(255,105,255);
-    Font = Enum.Font.GothamBold;
-    FontSize = Enum.FontSize.Size24;
-})
-
-game.StarterGui:SetCore("SendNotification",{
-    Title = "Made by Bytes#0001";
-    Text = "yep ok (gg)";
-    Duration = 10;
-})
-
 UI:Notify("Make sure to slide the Candy Corn Slider before using any candy corn farm  ","For Auto Farm All ONLY Toggle Auto Bubbles and you can adjust how fast you want to blow the bubble")
