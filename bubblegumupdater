@@ -100,8 +100,326 @@ end
 
 -- Updater Here 
 
-game.StarterGui:SetCore("SendNotification",{
-  Title = "Pet update coming soon";
-  Text = "I just need to fix a bug from making it crash";
-  Duration = 10;
+function tp(x,y,z)
+    local valtomove = _G.CandyCornSpeed
+    noclip = true
+    anchored = false
+    moving = true
+    if x < game.Players.LocalPlayer.Character.HumanoidRootPart.Position.X then
+    while x < game.Players.LocalPlayer.Character.HumanoidRootPart.Position.X do
+    wait()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(game.Players.LocalPlayer.Character.HumanoidRootPart.Position.X-valtomove,game.Players.LocalPlayer.Character.HumanoidRootPart.Position.Y,game.Players.LocalPlayer.Character.HumanoidRootPart.Position.Z))
+    end
+    end
+    if z < game.Players.LocalPlayer.Character.HumanoidRootPart.Position.Z then
+    while z < game.Players.LocalPlayer.Character.HumanoidRootPart.Position.Z do
+    wait()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(game.Players.LocalPlayer.Character.HumanoidRootPart.Position.X,game.Players.LocalPlayer.Character.HumanoidRootPart.Position.Y,game.Players.LocalPlayer.Character.HumanoidRootPart.Position.Z-valtomove))
+    end
+    end
+    if x > game.Players.LocalPlayer.Character.HumanoidRootPart.Position.X then
+    while x > game.Players.LocalPlayer.Character.HumanoidRootPart.Position.X do
+    wait()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(game.Players.LocalPlayer.Character.HumanoidRootPart.Position.X+valtomove,game.Players.LocalPlayer.Character.HumanoidRootPart.Position.Y,game.Players.LocalPlayer.Character.HumanoidRootPart.Position.Z))
+    end
+    end
+    if z > game.Players.LocalPlayer.Character.HumanoidRootPart.Position.Z then
+    while z > game.Players.LocalPlayer.Character.HumanoidRootPart.Position.Z do
+    wait()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(game.Players.LocalPlayer.Character.HumanoidRootPart.Position.X,game.Players.LocalPlayer.Character.HumanoidRootPart.Position.Y,game.Players.LocalPlayer.Character.HumanoidRootPart.Position.Z+valtomove))
+    end
+    end
+    if y < game.Players.LocalPlayer.Character.HumanoidRootPart.Position.Y then
+    while y < game.Players.LocalPlayer.Character.HumanoidRootPart.Position.Y do
+    wait()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(game.Players.LocalPlayer.Character.HumanoidRootPart.Position.X,game.Players.LocalPlayer.Character.HumanoidRootPart.Position.Y-valtomove,game.Players.LocalPlayer.Character.HumanoidRootPart.Position.Z))
+    end
+    end
+    if y > game.Players.LocalPlayer.Character.HumanoidRootPart.Position.Y then
+    while y > game.Players.LocalPlayer.Character.HumanoidRootPart.Position.Y do
+    wait()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(game.Players.LocalPlayer.Character.HumanoidRootPart.Position.X,game.Players.LocalPlayer.Character.HumanoidRootPart.Position.Y+valtomove,game.Players.LocalPlayer.Character.HumanoidRootPart.Position.Z))
+    end
+    end
+    moving = false
+    game.Players.LocalPlayer.Character:MoveTo(Vector3.new(x,y,z))
+    if anchored == true then
+    game.Players.LocalPlayer.Character.Head.Anchored = false
+    end
+    end
+    
+    spawn (function()
+    game:getService("RunService"):BindToRenderStep("",0,function()
+    if not game.Players.LocalPlayer.Character:findFirstChildOfClass("Humanoid") then return end
+    if moving == true then
+    if noclip == true then
+    game.Players.LocalPlayer.Character:findFirstChildOfClass("Humanoid"):ChangeState(11)
+    end
+    if anchored == true then
+    game.Players.LocalPlayer.Character.Head.Anchored = true
+    end
+    end
+    end)
+    end)
+
+local eggs = {}
+for i,v in pairs(workspace.Eggs:GetChildren()) do 
+    if not table.find(eggs,v.Name) then 
+        table.insert(eggs,v.Name)
+    end
+end
+-- Start 
+local BubbleUI = game:GetService("CoreGui"):FindFirstChild("Bubble Gum Simulator V1")
+if BubbleUI then 
+    BubbleUI:Destroy()
+end
+
+local BubbleUI2 = game:GetService("CoreGui"):FindFirstChild("Bubble Gum Simulator V2")
+
+if BubbleUI2 then 
+    BubbleUI2:Destroy()
+end
+
+-- Bubble Gum Simulator
+local GUI = loadstring(game:HttpGet("https://pastebin.com/raw/qwdPKKDN"))()
+local UI = GUI.new("Bubble Gum Simulator V2")
+
+-- themes 
+local themes = {
+    Background = Color3.fromRGB(24,24,24),
+    Glow = Color3.fromRGB(0,0,0),
+    Accent = Color3.fromRGB(10,10,10),
+    LightContrast = Color3.fromRGB(20,20,20),
+    DarkContrast = Color3.fromRGB(14,14,14),
+    TextColor = Color3.fromRGB(255,140,0)
+}
+
+-- Home Page
+local Home = UI:addPage("Home Page")
+local Stuff = Home:addSection("Information and Stuff")
+
+Stuff:addButton("Version : V2")
+
+Stuff:addButton("Changelog : Pets and more ")
+
+Stuff:addButton("Made by Bytes#0001",function()
+    setclipboard("Bytes#0001")
+end)
+
+Stuff:addButton("Discord Invite : https://discord.gg/pHx3xdp",function()
+    setclipboard("https://discord.gg/pHx3xdp")
+end)
+
+Stuff:addButton("If you use this in a yt video please credit me")
+
+
+-- Player Page
+local Pmods = UI:addPage("Local Player")
+local Mods = Pmods:addSection("Player Modifications")
+
+Mods:addSlider("WalkSpeed",16,16,500,function(value)
+    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = value
+end)
+
+Mods:addSlider("Jump Power",50,50,15000,function(value)
+    game.Players.LocalPlayer.Character.Humanoid.JumpPower = value
+end)
+
+Mods:addButton("Respawn",function()
+    game.Players.LocalPlayer.Character.Humanoid.Health = 0 
+    warn("DIED")
+end)
+
+-- Auto Farm Page 
+local Auto = UI:addPage("Auto Farm")
+local AutoFarmSection = Auto:addSection("Auto Farm")
+local DelaySection = Auto:addSection("Auto Farm Delays")
+
+AutoFarmSection:addToggle("Auto Bubbles",false,function(value)
+    _G.AutoBubbles = value 
+    while _G.AutoBubbles do 
+        local v1 = "BlowBubble"
+        local rem = game:GetService("ReplicatedStorage").NetworkRemoteEvent
+        rem:FireServer(v1)
+        wait(_G.DelayBubble)
+    end
+end)
+
+AutoFarmSection:addToggle("Auto Sell",false,function(value)
+    _G.AutoSell = value 
+    while _G.AutoSell do 
+        local v1 = "Teleport"
+        local v2 = "Sell"
+        local rem = game:GetService("ReplicatedStorage").NetworkRemoteEvent
+        rem:FireServer(v1, v2)
+        wait(_G.DelaySell)
+    end
+end)
+
+AutoFarmSection:addToggle("Auto Candy Corn",false,function(value)
+    _G.AutoCandyCorn = value 
+    while _G.AutoCandyCorn do 
+        local v3 = "Teleport"
+        local v4 = "EventSpawn"
+        local rem = game:GetService("ReplicatedStorage").NetworkRemoteEvent
+        rem:FireServer(v3, v4)
+        wait(1)
+        tp(2428.83618, 55.0537605, -248.497726)
+        wait(3)
+        tp(2421.25537, 54.7258492, -276.733337)
+        wait(3)
+        tp(2409.83398, 54.9123192, -318.450043)
+        wait(3)
+        tp(2421.0979, 54.7007103, -341.316223)
+        wait(3)
+        tp(2492.46094, 54.7953873, -339.586975)
+        wait(3)
+        tp(2538.28491, 54.7118912, -320.481537)
+        wait(3)
+        tp(2561.58887, 54.710968, -322.130035)
+        wait(3)
+    end
+end)
+
+
+AutoFarmSection:addToggle("Auto Farm All (Toggle Auto Bubbles for this)",false,function(value)
+    _G.AutoFarmAll = value 
+    while _G.AutoFarmAll do 
+        local v3 = "Teleport"
+        local v4 = "EventSpawn"
+        local rem = game:GetService("ReplicatedStorage").NetworkRemoteEvent
+        rem:FireServer(v3, v4)
+        wait(0.7)
+        -- Starting Candy Corn Farm 
+        tp(2428.83618, 55.0537605, -248.497726)
+        wait(3)
+        tp(2421.25537, 54.7258492, -276.733337)
+        wait(3)
+        tp(2409.83398, 54.9123192, -318.450043)
+        wait(3)
+        tp(2421.0979, 54.7007103, -341.316223)
+        wait(3)
+        tp(2492.46094, 54.7953873, -339.586975)
+        wait(3)
+        tp(2538.28491, 54.7118912, -320.481537)
+        wait(3)
+        tp(2561.58887, 54.710968, -322.130035)
+        wait(3)
+        -- Selling
+        local v1 = "Teleport"
+        local v2 = "Sell"
+        local rem = game:GetService("ReplicatedStorage").NetworkRemoteEvent
+        rem:FireServer(v1,v2)
+        wait(1.5)
+    end
+end)
+
+
+DelaySection:addSlider("Auto Bubbles Delay",1,1,500,function(value)
+    _G.DelayBubble = value 
+end)
+
+DelaySection:addSlider("Auto Sell Delay",1,1,500,function(value)
+    _G.DelaySell = value 
+end)
+
+DelaySection:addSlider("Candy Corn House to House Speed ",5,1,10,function(value)
+    _G.CandyCornSpeed = value 
+end)
+
+-- Pets 
+local PetPage = UI:addPage(" Pet Stuff")
+local EggOpen = PetPage:addSection("Auto Open Eggs ( Make sure to be near the egg )")
+local DeleteYep = PetPage:addSection("Auto Delete (Check Auto Delete Settings just in case)")
+
+EggOpen:addDropdown("Pick Egg",eggs,function(value)
+    _G.EggValue = value
+end)
+
+EggOpen:addToggle("Auto Open Egg",false,function(value)
+    _G.AutoOpenEgg = value 
+    while _G.AutoOpenEgg do
+        local v1 = "PurchaseEgg"
+        local v2 = _G.EggValue 
+        local rem = game:GetService("ReplicatedStorage").NetworkRemoteEvent
+        rem:FireServer(v1,v2)
+        wait(0.4)
+    end
+end)
+
+DeleteYep:addToggle("Auto Delete Commons",false,function(value)
+    local v1 = "AutoDelete"
+    local v2 = "Common"
+    local rem = game:GetService("ReplicatedStorage").NetworkRemoteEvent
+    rem:FireServer(v1,v2)
+end)
+
+DeleteYep:addToggle("Auto Delete Uniques",false,function(value)
+    local v1 = "AutoDelete"
+    local v2 = "Unique"
+    local rem = game:GetService("ReplicatedStorage").NetworkRemoteEvent
+    rem:FireServer(v1,v2)
+end)
+
+DeleteYep:addToggle("Auto Delete Rares",false,function(value)
+    local v1 = "AutoDelete"
+    local v2 = "Rare"
+    local rem = game:GetService("ReplicatedStorage").NetworkRemoteEvent
+    rem:FireServer(v1,v2)
+end)
+
+DeleteYep:addToggle("Auto Delete Epics",false,function(value)
+    local v1 = "AutoDelete"
+    local v2 = "Epic"
+    local rem = game:GetService("ReplicatedStorage").NetworkRemoteEvent
+    rem:FireServer(v1,v2)
+end)
+
+-- Settings
+local Settings = UI:addPage(" Settings")
+local ThemeE = Settings:addSection("Themes")
+local ToggleGui = Settings:addSection("Toggle GUI")
+local DestroyGui = Settings:addSection("Destroy GUI")
+
+for theme,color in pairs(themes) do 
+ThemeE:addColorPicker(theme,color,function(color3)
+UI:setTheme(theme,color3)
+end)
+end
+
+ToggleGui:addKeybind("Toggle GUI",Enum.KeyCode.RightShift,function()
+    UI:toggle()
+end, function()
+end)
+
+DestroyGui:addButton("Destroy GUI",function()
+    game:GetService("CoreGui"):FindFirstChild("Bubble Gum Simulator V2"):Destroy()
+end)
+
+
+UI:SelectPage(UI.pages[1],true)
+
+-- Anti Afk
+local VirtualUser = game:GetService("VirtualUser")
+game.Players.LocalPlayer.Idled:Connect(function()
+VirtualUser:CaptureController()
+VirtualUser:ClickButton2(Vector2.new())
+end)
+ 
+print("Anti afk has ran")
+
+
+game.StarterGui:SetCore("ChatMakeSystemMessage",{
+    Text = "Make sure to join the discord server for further updates";
+    Color = Color3.fromRGB(255,105,255);
+    Font = Enum.Font.GothamBold;
+    FontSize = Enum.FontSize.Size24;
 })
+
+game.StarterGui:SetCore("SendNotification",{
+    Title = "Made by Bytes#0001";
+    Text = "yep ok (gg)";
+    Duration = 10;
+})
+
+UI:Notify("Make sure to slide the Candy Corn Slider before using any candy corn farm  ","For Auto Farm All ONLY Toggle Auto Bubbles and you can adjust how fast you want to blow the bubble")
