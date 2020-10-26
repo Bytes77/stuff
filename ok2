@@ -1,8 +1,7 @@
 print("Made by Bytes#0001"
 -- Update thing
 
-local Core1 = game:GetService("CoreGui")
-local Mine = Core1:FindFirstChild("Mining Champions V2")
+local Mine = game:GetService("CoreGui"):FindFirstChild("Mining Champions V2")
 
 if Mine then 
     Mine:Destroy()
