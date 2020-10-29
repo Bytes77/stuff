@@ -248,7 +248,7 @@ AFS:addToggle("Auto Farm All  ( Toggle Auto Bubbles for this ) ",false,function(
         local v2 = "Sell"
         local rem = game:GetService("ReplicatedStorage").NetworkRemoteEvent
         rem:FireServer(v1, v2)
-        wait(1.2)
+        wait(0.8)
     end
 end)
 
