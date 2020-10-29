@@ -1,4 +1,7 @@
- -- Useful Stuff 
+-- Made by Bytes#0001
+print("Bytes#0001")
+
+-- Useful Stuff 
 local PS = game:GetService("Players")
 local CS = game:GetService("CoreGui")
 local eggs = {}
@@ -311,7 +314,7 @@ TPS:addButton("Halloween Area / Event Area",function()
     local v4 = "EventSpawn"
     local rem = game:GetService("ReplicatedStorage").NetworkRemoteEvent
     rem:FireServer(v3, v4)
-    wait(9.1)
+    wait(0.001)
 end)
 
 -- Pet stuff 
@@ -396,4 +399,4 @@ print("Anti Afk Has Ran")
 
 
 UI:SelectPage(UI.pages[1],true)
-UI:Notify("Make sure to complete all the options before using the autofarm all feature and auto candy corn","Also using the dropdowns might crash if you delete one letter lol and when your done using a autofarm feature, toggle it off and wait for it to be done")
+UI:Notify("Make sure to complete all the options before using the autofarm all feature and auto candy corn","Also using the dropdowns might crash if you delete one letter lol and when your done using a autofarm feature, toggle it off and wait for it to be done. Also default toggle to hide the gui is rightshift")
