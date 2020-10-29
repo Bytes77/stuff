@@ -1,250 +1,340 @@
--- Updater Here 
-
-function tp(x,y,z)
-    local valtomove = _G.CandyCornSpeed
-    noclip = true
-    anchored = false
-    moving = true
-    if x < game.Players.LocalPlayer.Character.HumanoidRootPart.Position.X then
-    while x < game.Players.LocalPlayer.Character.HumanoidRootPart.Position.X do
-    wait()
-    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(game.Players.LocalPlayer.Character.HumanoidRootPart.Position.X-valtomove,game.Players.LocalPlayer.Character.HumanoidRootPart.Position.Y,game.Players.LocalPlayer.Character.HumanoidRootPart.Position.Z))
-    end
-    end
-    if z < game.Players.LocalPlayer.Character.HumanoidRootPart.Position.Z then
-    while z < game.Players.LocalPlayer.Character.HumanoidRootPart.Position.Z do
-    wait()
-    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(game.Players.LocalPlayer.Character.HumanoidRootPart.Position.X,game.Players.LocalPlayer.Character.HumanoidRootPart.Position.Y,game.Players.LocalPlayer.Character.HumanoidRootPart.Position.Z-valtomove))
-    end
-    end
-    if x > game.Players.LocalPlayer.Character.HumanoidRootPart.Position.X then
-    while x > game.Players.LocalPlayer.Character.HumanoidRootPart.Position.X do
-    wait()
-    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(game.Players.LocalPlayer.Character.HumanoidRootPart.Position.X+valtomove,game.Players.LocalPlayer.Character.HumanoidRootPart.Position.Y,game.Players.LocalPlayer.Character.HumanoidRootPart.Position.Z))
-    end
-    end
-    if z > game.Players.LocalPlayer.Character.HumanoidRootPart.Position.Z then
-    while z > game.Players.LocalPlayer.Character.HumanoidRootPart.Position.Z do
-    wait()
-    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(game.Players.LocalPlayer.Character.HumanoidRootPart.Position.X,game.Players.LocalPlayer.Character.HumanoidRootPart.Position.Y,game.Players.LocalPlayer.Character.HumanoidRootPart.Position.Z+valtomove))
-    end
-    end
-    if y < game.Players.LocalPlayer.Character.HumanoidRootPart.Position.Y then
-    while y < game.Players.LocalPlayer.Character.HumanoidRootPart.Position.Y do
-    wait()
-    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(game.Players.LocalPlayer.Character.HumanoidRootPart.Position.X,game.Players.LocalPlayer.Character.HumanoidRootPart.Position.Y-valtomove,game.Players.LocalPlayer.Character.HumanoidRootPart.Position.Z))
-    end
-    end
-    if y > game.Players.LocalPlayer.Character.HumanoidRootPart.Position.Y then
-    while y > game.Players.LocalPlayer.Character.HumanoidRootPart.Position.Y do
-    wait()
-    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(game.Players.LocalPlayer.Character.HumanoidRootPart.Position.X,game.Players.LocalPlayer.Character.HumanoidRootPart.Position.Y+valtomove,game.Players.LocalPlayer.Character.HumanoidRootPart.Position.Z))
-    end
-    end
-    moving = false
-    game.Players.LocalPlayer.Character:MoveTo(Vector3.new(x,y,z))
-    if anchored == true then
-    game.Players.LocalPlayer.Character.Head.Anchored = false
-    end
-    end
-    
-    spawn (function()
-    game:getService("RunService"):BindToRenderStep("",0,function()
-    if not game.Players.LocalPlayer.Character:findFirstChildOfClass("Humanoid") then return end
-    if moving == true then
-    if noclip == true then
-    game.Players.LocalPlayer.Character:findFirstChildOfClass("Humanoid"):ChangeState(11)
-    end
-    if anchored == true then
-    game.Players.LocalPlayer.Character.Head.Anchored = true
-    end
-    end
-    end)
-    end)
-
+ -- Useful Stuff 
+local PS = game:GetService("Players")
+local CS = game:GetService("CoreGui")
 local eggs = {}
 for i,v in pairs(workspace.Eggs:GetChildren()) do 
     if not table.find(eggs,v.Name) then 
         table.insert(eggs,v.Name)
     end
 end
--- Start 
-local BubbleUI = game:GetService("CoreGui"):FindFirstChild("Bubble Gum Simulator V1")
-if BubbleUI then 
-    BubbleUI:Destroy()
-end
 
-local BubbleUI2 = game:GetService("CoreGui"):FindFirstChild("Bubble Gum Simulator V2")
+-- Check Replica 
+local BubbleREP = CS:FindFirstChild("Bubble Gum Simulator V3")
+local BubbleREP2 = CS:FindFirstChild("Bubble Gum Simulator V1")
+if BubbleREP then BubbleREP:Destroy() end 
+if BubbleREP2 then BubbleREP2:Destroy() end 
 
-if BubbleUI2 then 
-    BubbleUI2:Destroy()
-end
-
--- Bubble Gum Simulator
+-- Bubble Gum Simulator 
 local GUI = loadstring(game:HttpGet("https://pastebin.com/raw/qwdPKKDN"))()
-local UI = GUI.new("Bubble Gum Simulator V2")
+local UI = GUI.new("Bubble Gum Simulator V3",5889222637)
 
--- themes 
+-- Themes 
 local themes = {
     Background = Color3.fromRGB(24,24,24),
     Glow = Color3.fromRGB(0,0,0),
     Accent = Color3.fromRGB(10,10,10),
-    LightContrast = Color3.fromRGB(20,20,20),
+    LighContrast = Color3.fromRGB(20,20,20),
     DarkContrast = Color3.fromRGB(14,14,14),
     TextColor = Color3.fromRGB(255,140,0)
 }
 
--- Home Page
-local Home = UI:addPage("Home Page")
-local Stuff = Home:addSection("Information and Stuff")
-
-Stuff:addButton("Version : V2")
-
-Stuff:addButton("Changelog : Pets and more ")
-
-Stuff:addButton("Made by Bytes#0001",function()
+-- Home Page 
+local Home = UI:addPage("Home Page",5889222637)
+local Stuff = Home:addSection("Information")
+local Credits = Home:addSection("Credits")
+Stuff:addButton("Verison : V3")
+Stuff:addButton("Changelog : lots of new options for the autofarm page and more")
+Stuff:addButton("If you want to linkvertise this for your video dm me first")
+Credits:addButton("Made by Bytes#0001",function()
     setclipboard("Bytes#0001")
 end)
-
-Stuff:addButton("Discord Invite : https://discord.gg/pHx3xdp",function()
+Credits:addButton("Discord Invite : https://discord.gg/pHx3xdp",function()
     setclipboard("https://discord.gg/pHx3xdp")
+    game.StarterGui:SetCore("SendNotification",{Title = "Copied to clipboard";Text = "If your a synapse user it should have copied to your clipboard";Duration = 5;})
 end)
 
-Stuff:addButton("If you use this in a yt video please credit me")
+Credits:addButton("UI Library : Venyx")
 
+-- Player Page 
+local LP = UI:addPage("Local Player")
+local PMODS = LP:addSection("Player Modifications")
+local PMISC = LP:addSection("Miscellaneous")
 
--- Player Page
-local Pmods = UI:addPage("Local Player")
-local Mods = Pmods:addSection("Player Modifications")
-
-Mods:addSlider("WalkSpeed",16,16,500,function(value)
-    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = value
+PMODS:addSlider("WalkSpeed",16,16,500,function(value)
+    _G.SpeedValue = value
 end)
 
-Mods:addSlider("Jump Power",50,50,15000,function(value)
-    game.Players.LocalPlayer.Character.Humanoid.JumpPower = value
+PMODS:addSlider("Jump Power",50,50,15000,function(value)
+    _G.JumpPowerValue = value
 end)
 
-Mods:addButton("Respawn",function()
-    game.Players.LocalPlayer.Character.Humanoid.Health = 0 
-    warn("DIED")
+PMODS:addButton("Set WalkSpeed",function()
+    PS.LocalPlayer.Character.Humanoid.WalkSpeed = _G.SpeedValue
 end)
 
--- Auto Farm Page 
-local Auto = UI:addPage("Auto Farm")
-local AutoFarmSection = Auto:addSection("Auto Farm")
-local DelaySection = Auto:addSection("Auto Farm Delays")
+PMODS:addButton("Set Jump Power",function()
+    PS.LocalPlayer.Character.Humanoid.JumpPower = _G.JumpPowerValue
+end)
 
-AutoFarmSection:addToggle("Auto Bubbles",false,function(value)
-    _G.AutoBubbles = value 
+PMISC:addTextbox("Spam Value","Text Here",function(value)
+    _G.SpamValue = value
+end)
+
+PMISC:addToggle("Spam Chat",false,function(value)
+    _G.SpamChat = value
+    while _G.SpamChat do 
+        local v1 = _G.SpamValue
+        local v2 = "All"
+        local rem = game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest
+        rem:FireServer(v1, v2)
+        wait(0.1)
+    end
+end)
+
+PMISC:addButton("DIE",function()
+    PS.LocalPlayer.Character.Humanoid.Health = 0 
+    warn("DIED :c")
+end)
+
+-- Auto Farm Page
+local AF = UI:addPage("Auto Farm")
+local AFS = AF:addSection("Auto Farm")
+local BAFD = AF:addSection("Basic Auto Farm Options")
+local CCD = AF:addSection("Event Auto Farm Options ( Halloween Related )")
+local AAD = AF:addSection("Auto Farm All Options")
+
+AFS:addToggle("Auto bubbles",false,function(value)
+    _G.AutoBubbles = value
     while _G.AutoBubbles do 
         local v1 = "BlowBubble"
         local rem = game:GetService("ReplicatedStorage").NetworkRemoteEvent
         rem:FireServer(v1)
-        wait(_G.DelayBubble)
+        wait(_G.AutoDelayBubbles)
     end
 end)
 
-AutoFarmSection:addToggle("Auto Sell",false,function(value)
+AFS:addToggle("Auto Sell",false,function(value)
     _G.AutoSell = value 
-    while _G.AutoSell do 
+    while _G.AutoSell do
         local v1 = "Teleport"
         local v2 = "Sell"
         local rem = game:GetService("ReplicatedStorage").NetworkRemoteEvent
         rem:FireServer(v1, v2)
-        wait(_G.DelaySell)
+        wait(_G.AutoDelaySell)
     end
 end)
 
-AutoFarmSection:addToggle("Auto Candy Corn",false,function(value)
-    _G.AutoCandyCorn = value 
-    while _G.AutoCandyCorn do 
+AFS:addToggle("Auto Candy Corn",false,function(value)
+    local plr = game.Players.LocalPlayer
+    local tween_s = game:service"TweenService";
+    local info = TweenInfo.new(_G.CandyCornHouseSpeed,Enum.EasingStyle.Sine);
+    function tp(...)
+      local tic_k = tick();
+      local params = {...};
+      local cframe = CFrame.new(params[1],params[2],params[3]);
+      local tween,err = pcall(function()
+          local tween = tween_s:Create(plr.Character["HumanoidRootPart"],info,{CFrame=cframe});
+          tween:Play();
+      end)
+      if not tween then return err end
+    end   
+    _G.AutoCandyCorn = value
+    while _G.AutoCandyCorn do    
+        -- Teleport to Event Area
         local v3 = "Teleport"
         local v4 = "EventSpawn"
         local rem = game:GetService("ReplicatedStorage").NetworkRemoteEvent
         rem:FireServer(v3, v4)
-        wait(1)
-        tp(2428.83618, 55.0537605, -248.497726)
-        wait(3)
-        tp(2421.25537, 54.7258492, -276.733337)
-        wait(3)
-        tp(2409.83398, 54.9123192, -318.450043)
-        wait(3)
-        tp(2421.0979, 54.7007103, -341.316223)
-        wait(3)
-        tp(2492.46094, 54.7953873, -339.586975)
-        wait(3)
-        tp(2538.28491, 54.7118912, -320.481537)
-        wait(3)
-        tp(2561.58887, 54.710968, -322.130035)
-        wait(3)
+        wait(1.2)
+        -- Bypass Tp 
+        tp(2547.82275, 54.7007103, -199.641678)
+        wait(0.4)
+        tp(2508.20337, 54.7007103, -218.101364)
+        wait(0.4)
+        tp(2478.04785, 55.7007103, -228.838669)
+        wait(0.4)
+        tp(2457.03345, 55.2007103, -236.321228)
+        -- Auto Candy Corn Farm 
+        tp(2430.12598, 54.7561188, -249.377075)
+        tp(2430.12598, 54.7561188, -249.377075)
+        wait(_G.AutoWaitCandyCorn)
+        tp(2423.53857, 54.7007103, -278.175812)
+        tp(2423.53857, 54.7007103, -278.175812)
+        wait(_G.AutoWaitCandyCorn)
+        tp(2411.71069, 54.8853149, -321.054352)
+        tp(2411.71069, 54.8853149, -321.054352)
+        wait(_G.AutoWaitCandyCorn)
+        tp(2422.92163, 54.7007103, -342.319061)
+        tp(2422.92163, 54.7007103, -342.319061)
+        wait(_G.AutoWaitCandyCorn)
+        tp(2464.25977, 55.2407112, -337.885223) -- Bypass Tp 
+        wait(0.3)
+        tp(2493.09473, 54.7617378, -340.128845)
+        tp(2493.09473, 54.7617378, -340.128845)
+        wait(_G.AutoWaitCandyCorn)
+        tp(2514.07886, 54.7007103, -321.738281) -- Bypass Tp 
+        wait(0.3)
+        tp(2536.16162, 54.8662071, -324.277557)
+        tp(2536.16162, 54.8662071, -324.277557)
+        wait(_G.AutoWaitCandyCorn)
+        tp(2565.07837, 54.9797211, -322.230652)
+        tp(2565.07837, 54.9797211, -322.230652)
+        wait(4)
     end
 end)
 
-
-AutoFarmSection:addToggle("Auto Farm All (Toggle Auto Bubbles for this)",false,function(value)
-    _G.AutoFarmAll = value 
+AFS:addToggle("Auto Farm All  ( Toggle Auto Bubbles for this ) ",false,function(value)
+    -- Teleport Tween 
+    local plr = game.Players.LocalPlayer
+    local tween_s = game:service"TweenService";
+    local info = TweenInfo.new(_G.AutoFarmCandyCornSpeed,Enum.EasingStyle.Sine);
+    function tp(...)
+      local tic_k = tick();
+      local params = {...};
+      local cframe = CFrame.new(params[1],params[2],params[3]);
+      local tween,err = pcall(function()
+          local tween = tween_s:Create(plr.Character["HumanoidRootPart"],info,{CFrame=cframe});
+          tween:Play();
+      end)
+      if not tween then return err end
+    end   
+    _G.AutoFarmAll = value
     while _G.AutoFarmAll do 
         local v3 = "Teleport"
         local v4 = "EventSpawn"
         local rem = game:GetService("ReplicatedStorage").NetworkRemoteEvent
         rem:FireServer(v3, v4)
-        wait(0.7)
-        -- Starting Candy Corn Farm 
-        tp(2428.83618, 55.0537605, -248.497726)
-        wait(3)
-        tp(2421.25537, 54.7258492, -276.733337)
-        wait(3)
-        tp(2409.83398, 54.9123192, -318.450043)
-        wait(3)
-        tp(2421.0979, 54.7007103, -341.316223)
-        wait(3)
-        tp(2492.46094, 54.7953873, -339.586975)
-        wait(3)
-        tp(2538.28491, 54.7118912, -320.481537)
-        wait(3)
-        tp(2561.58887, 54.710968, -322.130035)
-        wait(3)
-        -- Selling
+        wait(1)
+         -- Bypass Tp 
+        tp(2547.82275, 54.7007103, -199.641678)
+        wait(0.4)
+        tp(2508.20337, 54.7007103, -218.101364)
+        wait(0.4)
+        tp(2478.04785, 55.7007103, -228.838669)
+        wait(0.4)
+        tp(2457.03345, 55.2007103, -236.321228)
+        -- Auto Candy Corn Farm 
+        tp(2430.12598, 54.7561188, -249.377075)
+        tp(2430.12598, 54.7561188, -249.377075)
+        wait(_G.AFAHWAIT)
+        tp(2423.53857, 54.7007103, -2768.175812)
+        tp(2423.53857, 54.7007103, -278.175812)
+        wait(_G.AFAHWAIT)
+        tp(2411.71069, 54.8853149, -321.054352)
+        tp(2411.71069, 54.8853149, -321.054352)
+        wait(_G.AFAHWAIT)
+        tp(2422.92163, 54.7007103, -342.319061)
+        tp(2422.92163, 54.7007103, -342.319061)
+        wait(_G.AFAHWAIT)
+        tp(2464.25977, 55.2407112, -337.885223) -- Bypass Tp 
+        wait(0.3)
+        tp(2493.09473, 54.7617378, -340.128845)
+        tp(2493.09473, 54.7617378, -340.128845)
+        wait(_G.AFAHWAIT)
+        tp(2514.07886, 54.7007103, -321.738281) -- Bypass Tp 
+        wait(0.3)
+        tp(2536.16162, 54.8662071, -324.277557)
+        tp(2536.16162, 54.8662071, -324.277557)
+        wait(_G.AFAHWAIT)
+        tp(2565.07837, 54.9797211, -322.230652)
+        tp(2565.07837, 54.9797211, -322.230652)
+        wait(_G.AFAHWAIT)
+        local v3 = "Teleport"
+        local v4 = _G.SellLocationThing
+        local rem = game:GetService("ReplicatedStorage").NetworkRemoteEvent
+        rem:FireServer(v3, v4)
+        wait(0.5)
         local v1 = "Teleport"
         local v2 = "Sell"
         local rem = game:GetService("ReplicatedStorage").NetworkRemoteEvent
-        rem:FireServer(v1,v2)
-        wait(1.5)
+        rem:FireServer(v1, v2)
+        wait(0.2)
+        local v1 = "Teleport"
+        local v2 = "Sell"
+        local rem = game:GetService("ReplicatedStorage").NetworkRemoteEvent
+        rem:FireServer(v1, v2)
+        wait(0.2)
+        local v1 = "Teleport"
+        local v2 = "Sell"
+        local rem = game:GetService("ReplicatedStorage").NetworkRemoteEvent
+        rem:FireServer(v1, v2)
+        wait(1.3)
     end
 end)
 
-
-DelaySection:addSlider("Auto Bubbles Delay",1,1,500,function(value)
-    _G.DelayBubble = value 
+BAFD:addSlider("Auto Bubbles Blow Delay",0,0,50,function(value)
+    _G.AutoDelayBubbles = value
 end)
 
-DelaySection:addSlider("Auto Sell Delay",1,1,500,function(value)
-    _G.DelaySell = value 
+BAFD:addSlider("Auto Sell Delay",0,0,500,function(value)
+    _G.AutoDelaySell = value
 end)
 
-DelaySection:addSlider("Candy Corn House to House Speed ",5,1,10,function(value)
-    _G.CandyCornSpeed = value 
+CCD:addDropdown("Auto Candy Corn Speed",{"Fuck it","Medium","Slow"},function(value)
+    if value == "Fuck it" then 
+        _G.CandyCornHouseSpeed = 0.8
+    elseif value == "Medium" then 
+        _G.CandyCornHouseSpeed = 1.7
+    elseif value == "Slow" then 
+        _G.CandyCornHouseSpeed = 2.5
+    end
 end)
 
--- Pets 
-local PetPage = UI:addPage(" Pet Stuff")
-local EggOpen = PetPage:addSection("Auto Open Eggs ( Make sure to be near the egg )")
-local DeleteYep = PetPage:addSection("Auto Delete (Check Auto Delete Settings just in case)")
+CCD:addSlider("Auto Candy Corn House Wait",1,1,5,function(value)
+    _G.AutoWaitCandyCorn = value
+end)
 
-EggOpen:addDropdown("Pick Egg",eggs,function(value)
+AAD:addDropdown("Auto Farm All Candy Corn House Speed",{"Fuck it","Medium (Recommended)","Slow"},function(value)
+    if value == "Fuck it" then 
+        _G.AutoFarmCandyCornSpeed = 0.8
+    elseif value == "Medium (Recommended)" then 
+        _G.AutoFarmCandyCornSpeed = 1.7
+    elseif value == "Slow" then 
+        _G.AutoFarmCandyCornSpeed = 2.5
+    end
+end)
+
+AAD:addSlider("Auto Farm All Candy Corn House Wait",1,1,5,function(value)
+    _G.AFAHWAIT = value
+end)
+
+AAD:addDropdown("Auto Farm All Sell Place",{"Candy Land","Beach World","Atlantis","Underworld","Mystic Forest"},function(value)
+    if value == "Candy Land" then 
+        _G.SellLocationThing = "Candy LandSpawn"
+    elseif value == "Beach World" then 
+        _G.SellLocationThing = "Beach WorldSpawn"
+    elseif value == "Atlantis" then 
+        _G.SellLocationThing = "AtlantisSpawn"
+    elseif value == "Underworld" then 
+        _G.SellLocationThing = "UnderworldSpawn"
+    elseif value == "Mystic Forest" then 
+        _G.SellLocationThing = "Mystic ForestSpawn"
+    end
+end)
+
+-- Teleport Page 
+local TP = UI:addPage("Teleports")
+local TPS = TP:addSection("Teleports only one for now cause i was to lazy")
+
+TPS:addButton("Halloween Area / Event Area",function()
+    local v3 = "Teleport"
+    local v4 = "EventSpawn"
+    local rem = game:GetService("ReplicatedStorage").NetworkRemoteEvent
+    rem:FireServer(v3, v4)
+    wait(9.1)
+end)
+
+-- Pet stuff 
+local PT = UI:addPage(" Pet Stuff")
+local PTE = PT:addSection("Auto Open Eggs ( make sure to be near the egg )")
+local DeleteYep = PT:addSection("Auto Delete Pets for eggs ( Check Auto Delete Settings )")
+PTE:addDropdown("Pick a Egg",eggs,function(value)
     _G.EggValue = value
 end)
 
-EggOpen:addToggle("Auto Open Egg",false,function(value)
-    _G.AutoOpenEgg = value 
-    while _G.AutoOpenEgg do
+PTE:addToggle("Auto Open Egg",false,function(value)
+    _G.AutoOpenEgg = value
+    while _G.AutoOpenEgg do 
         local v1 = "PurchaseEgg"
         local v2 = _G.EggValue 
         local rem = game:GetService("ReplicatedStorage").NetworkRemoteEvent
         rem:FireServer(v1,v2)
-        wait(0.4)
+        wait(_G.EggDelayValue)
     end
+end)
+
+PTE:addSlider("Auto Open Egg Delay",0,0,10,function(value)
+    _G.EggDelayValue = value
 end)
 
 DeleteYep:addToggle("Auto Delete Commons",false,function(value)
@@ -275,7 +365,7 @@ DeleteYep:addToggle("Auto Delete Epics",false,function(value)
     rem:FireServer(v1,v2)
 end)
 
--- Settings
+-- Settings Page
 local Settings = UI:addPage(" Settings")
 local ThemeE = Settings:addSection("Themes")
 local ToggleGui = Settings:addSection("Toggle GUI")
@@ -293,19 +383,17 @@ end, function()
 end)
 
 DestroyGui:addButton("Destroy GUI",function()
-    game:GetService("CoreGui"):FindFirstChild("Bubble Gum Simulator V2"):Destroy()
+    CS:FindFirstChild("Bubble Gum Simulator V3"):Destroy()
 end)
 
-
-UI:SelectPage(UI.pages[1],true)
-
--- Anti Afk
+-- Anti Afk 
 local VirtualUser = game:GetService("VirtualUser")
 game.Players.LocalPlayer.Idled:Connect(function()
 VirtualUser:CaptureController()
 VirtualUser:ClickButton2(Vector2.new())
 end)
- 
-print("Anti afk has ran")
+print("Anti Afk Has Ran")
 
-UI:Notify("Make sure to slide the Candy Corn Slider before using any candy corn farm  ","For Auto Farm All ONLY Toggle Auto Bubbles and you can adjust how fast you want to blow the bubble")
+
+UI:SelectPage(UI.pages[1],true)
+UI:Notify("Make sure to complete all the options before using the autofarm all feature and auto candy corn","Also using the dropdowns might crash if you delete one letter lol and when your done using a autofarm feature, toggle it off and wait for it to be done")
