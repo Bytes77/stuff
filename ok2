@@ -546,16 +546,10 @@ game.StarterGui:SetCore("ChatMakeSystemMessage",{
     FontSize = Enum.FontSize.Size24;
 })
 
-game.StarterGui:SetCore("ChatMakeSystemMessage",{
-   Text = "I will probably make a bubble gum simulator script soon";
-   Color = Color3.fromRGB(0,255,150);
-   Font = Enum.Font.GothamBold;
-   FontSize = Enum.FontSize.Size24;
-})
 
 game.StarterGui:SetCore("SendNotification",{
     Title = "Made by Bytes#0001";
-    Text = "join the discord for bubble gum sim soon ";
+    Text = "join the discord for bubble gum simulator script ";
     Duration = 10;
 })
 
