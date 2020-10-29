@@ -1,7 +1,4 @@
--- Made by Bytes#0001
-print("Bytes#0001")
-
--- Useful Stuff 
+  -- Useful Stuff 
 local PS = game:GetService("Players")
 local CS = game:GetService("CoreGui")
 local eggs = {}
@@ -251,7 +248,7 @@ AFS:addToggle("Auto Farm All  ( Toggle Auto Bubbles for this ) ",false,function(
         local v2 = "Sell"
         local rem = game:GetService("ReplicatedStorage").NetworkRemoteEvent
         rem:FireServer(v1, v2)
-        wait(1.3)
+        wait(1.2)
     end
 end)
 
