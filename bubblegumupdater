@@ -1,4 +1,4 @@
-  -- Useful Stuff 
+ -- Useful Stuff 
 local PS = game:GetService("Players")
 local CS = game:GetService("CoreGui")
 local eggs = {}
@@ -8,15 +8,16 @@ for i,v in pairs(workspace.Eggs:GetChildren()) do
     end
 end
 
+
 -- Check Replica 
-local BubbleREP = CS:FindFirstChild("Bubble Gum Simulator V3")
+local BubbleREP = CS:FindFirstChild("Spooky Bubble Gum Simulator V3")
 local BubbleREP2 = CS:FindFirstChild("Bubble Gum Simulator V1")
 if BubbleREP then BubbleREP:Destroy() end 
 if BubbleREP2 then BubbleREP2:Destroy() end 
 
 -- Bubble Gum Simulator 
 local GUI = loadstring(game:HttpGet("https://pastebin.com/raw/qwdPKKDN"))()
-local UI = GUI.new("Bubble Gum Simulator V3",5889222637)
+local UI = GUI.new("Spooky Bubble Gum Simulator V3",5889222637)
 
 -- Themes 
 local themes = {
@@ -29,12 +30,12 @@ local themes = {
 }
 
 -- Home Page 
-local Home = UI:addPage("Home Page",5889222637)
+local Home = UI:addPage("Home Page")
 local Stuff = Home:addSection("Information")
 local Credits = Home:addSection("Credits")
 Stuff:addButton("Verison : V3")
-Stuff:addButton("Changelog : lots of new options for the autofarm page and more")
-Stuff:addButton("If you want to linkvertise this for your video dm me first")
+Stuff:addButton("Changelog:")
+Stuff:addButton("New Auto Farm options and more")
 Credits:addButton("Made by Bytes#0001",function()
     setclipboard("Bytes#0001")
 end)
@@ -248,7 +249,12 @@ AFS:addToggle("Auto Farm All  ( Toggle Auto Bubbles for this ) ",false,function(
         local v2 = "Sell"
         local rem = game:GetService("ReplicatedStorage").NetworkRemoteEvent
         rem:FireServer(v1, v2)
-        wait(0.8)
+        wait(0.2)
+        local v1 = "Teleport"
+        local v2 = "Sell"
+        local rem = game:GetService("ReplicatedStorage").NetworkRemoteEvent
+        rem:FireServer(v1, v2)
+        wait(1)
     end
 end)
 
@@ -260,10 +266,10 @@ BAFD:addSlider("Auto Sell Delay",0,0,500,function(value)
     _G.AutoDelaySell = value
 end)
 
-CCD:addDropdown("Auto Candy Corn Speed",{"Fuck it","Medium","Slow"},function(value)
-    if value == "Fuck it" then 
+CCD:addDropdown("Auto Candy Corn Speed",{"Fuck it ( Not Recommended )","Medium ( Recommended )","Slow"},function(value)
+    if value == "Fuck it ( Not Recommended )" then 
         _G.CandyCornHouseSpeed = 0.8
-    elseif value == "Medium" then 
+    elseif value == "Medium ( Recommended )" then 
         _G.CandyCornHouseSpeed = 1.7
     elseif value == "Slow" then 
         _G.CandyCornHouseSpeed = 2.5
@@ -274,9 +280,9 @@ CCD:addSlider("Auto Candy Corn House Wait",1,1,5,function(value)
     _G.AutoWaitCandyCorn = value
 end)
 
-AAD:addDropdown("Auto Farm All Candy Corn House Speed",{"Fuck it","Medium (Recommended)","Slow"},function(value)
-    if value == "Fuck it" then 
-        _G.AutoFarmCandyCornSpeed = 0.8
+AAD:addDropdown("House to House Speed",{"Fuck it ( Not Recommended )","Medium (Recommended)","Slow"},function(value)
+    if value == "Fuck it ( Not Recommended )" then 
+        _G.AutoFarmCandyCornSpeed = 0.9
     elseif value == "Medium (Recommended)" then 
         _G.AutoFarmCandyCornSpeed = 1.7
     elseif value == "Slow" then 
@@ -284,11 +290,11 @@ AAD:addDropdown("Auto Farm All Candy Corn House Speed",{"Fuck it","Medium (Recom
     end
 end)
 
-AAD:addSlider("Auto Farm All Candy Corn House Wait",1,1,5,function(value)
+AAD:addSlider("Wait at House Time",1,1,5,function(value)
     _G.AFAHWAIT = value
 end)
 
-AAD:addDropdown("Auto Farm All Sell Place",{"Candy Land","Beach World","Atlantis","Underworld","Mystic Forest"},function(value)
+AAD:addDropdown("Pick which place to sell at ( Must own )",{"Candy Land","Beach World","Atlantis","Underworld","Mystic Forest"},function(value)
     if value == "Candy Land" then 
         _G.SellLocationThing = "Candy LandSpawn"
     elseif value == "Beach World" then 
@@ -315,14 +321,14 @@ TPS:addButton("Halloween Area / Event Area",function()
 end)
 
 -- Pet stuff 
-local PT = UI:addPage(" Pet Stuff")
-local PTE = PT:addSection("Auto Open Eggs ( make sure to be near the egg )")
+local PT = UI:addPage("Item Stuff")
+local PTE = PT:addSection("Auto Open Eggs/Crates ( make sure to be near the egg )")
 local DeleteYep = PT:addSection("Auto Delete Pets for eggs ( Check Auto Delete Settings )")
-PTE:addDropdown("Pick a Egg",eggs,function(value)
+PTE:addDropdown("Pick a Egg/Crate",eggs,function(value)
     _G.EggValue = value
 end)
 
-PTE:addToggle("Auto Open Egg",false,function(value)
+PTE:addToggle("Auto Open Egg/Crate",false,function(value)
     _G.AutoOpenEgg = value
     while _G.AutoOpenEgg do 
         local v1 = "PurchaseEgg"
@@ -333,7 +339,7 @@ PTE:addToggle("Auto Open Egg",false,function(value)
     end
 end)
 
-PTE:addSlider("Auto Open Egg Delay",0,0,10,function(value)
+PTE:addSlider("Auto Open Delay",0,0,10,function(value)
     _G.EggDelayValue = value
 end)
 
@@ -394,6 +400,11 @@ VirtualUser:ClickButton2(Vector2.new())
 end)
 print("Anti Afk Has Ran")
 
+game.StarterGui:SetCore("SendNotification",{
+    Title = "Auto Farm All";
+    Text = "Farms all 3 auto farm features";
+    Duration = 10;
+})
 
 UI:SelectPage(UI.pages[1],true)
 UI:Notify("Make sure to complete all the options before using the autofarm all feature and auto candy corn","Also using the dropdowns might crash if you delete one letter lol and when your done using a autofarm feature, toggle it off and wait for it to be done. Also default toggle to hide the gui is rightshift")
