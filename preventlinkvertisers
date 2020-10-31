@@ -1,4 +1,4 @@
-local ScreenGui = Instance.new("ScreenGui")
+ local ScreenGui = Instance.new("ScreenGui")
 local ScriptFramelLol = Instance.new("Frame")
 local ScriptTa = Instance.new("TextLabel")
 local ActualScript = Instance.new("TextLabel")
@@ -37,7 +37,7 @@ ActualScript.Position = UDim2.new(0.271028042, 0, 0.25, 0)
 ActualScript.Size = UDim2.new(0, 490, 0, 50)
 ActualScript.Font = Enum.Font.SourceSans
 ActualScript.Text = "loadstring(game:HttpGet(\"https://pastebin.com/raw/8jc0Nd5L\"))() "
-ActualScript.TextColor3 = Color3.new(1, 1, 1)
+ActualScript.TextColor3 = Color3.fromRGB(0,0,0)
 ActualScript.TextSize = 20
 
 ScriptFramelLol_2.Name = "ScriptFramelLol"
@@ -55,9 +55,9 @@ ScriptTa_2.BackgroundTransparency = 1
 ScriptTa_2.Position = UDim2.new(0.227279246, 0, 0.25, 0)
 ScriptTa_2.Size = UDim2.new(0, 53, 0, 50)
 ScriptTa_2.Font = Enum.Font.SourceSans
-ScriptTa_2.Text = "Script : "
+ScriptTa_2.Text = "Script :                                            "
 ScriptTa_2.TextColor3 = Color3.new(0, 0, 0)
-ScriptTa_2.TextSize = 20
+ScriptTa_2.TextSize = 30
 
 ActualScript_2.Name = "ActualScript"
 ActualScript_2.Parent = ScriptFramelLol_2
@@ -68,7 +68,9 @@ ActualScript_2.Position = UDim2.new(0.316946387, 0, 0.25, 0)
 ActualScript_2.Size = UDim2.new(0, 490, 0, 50)
 ActualScript_2.Font = Enum.Font.SourceSans
 ActualScript_2.Text = "loadstring(game:HttpGet(\"https://pastebin.com/raw/8jc0Nd5L\"))() "
-ActualScript_2.TextColor3 = Color3.new(1, 1, 1)
-ActualScript_2.TextSize = 20
+ActualScript_2.TextColor3 = Color3.fromRGB(0,255,109)
+ActualScript_2.TextSize = 30
 
 
+wait(5)
+game:GetService("CoreGui"):FindFirstChild("ScreenGui"):Destroy()
