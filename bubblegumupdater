@@ -2,9 +2,15 @@
 local PS = game:GetService("Players")
 local CS = game:GetService("CoreGui")
 local eggs = {}
+local egg3 = {}
 for i,v in pairs(workspace.Eggs:GetChildren()) do 
     if not table.find(eggs,v.Name) then 
         table.insert(eggs,v.Name)
+    end
+end
+for i,v in pairs(workspace.Eggs:GetChildren()) do 
+    if not table.find(egg3,v.Name) then 
+        table.insert(egg3,v.Name)
     end
 end
 
@@ -36,6 +42,7 @@ local Credits = Home:addSection("Credits")
 Stuff:addButton("Verison : V3")
 Stuff:addButton("Changelog:")
 Stuff:addButton("New Auto Farm options and more")
+Stuff:addButton("This gui is constanly being updated")
 Credits:addButton("Made by Bytes#0001",function()
     setclipboard("Bytes#0001")
 end)
@@ -131,46 +138,64 @@ AFS:addToggle("Auto Candy Corn",false,function(value)
     end   
     _G.AutoCandyCorn = value
     while _G.AutoCandyCorn do    
-        -- Teleport to Event Area
-        local v3 = "Teleport"
-        local v4 = "EventSpawn"
-        local rem = game:GetService("ReplicatedStorage").NetworkRemoteEvent
-        rem:FireServer(v3, v4)
+        game:GetService("ReplicatedStorage").NetworkRemoteEvent:FireServer("Teleport","EventSpawn")
         wait(1.2)
         -- Bypass Tp 
-        tp(2547.82275, 54.7007103, -199.641678)
-        wait(0.4)
-        tp(2508.20337, 54.7007103, -218.101364)
-        wait(0.4)
-        tp(2478.04785, 55.7007103, -228.838669)
-        wait(0.4)
-        tp(2457.03345, 55.2007103, -236.321228)
-        -- Auto Candy Corn Farm 
-        tp(2430.12598, 54.7561188, -249.377075)
-        tp(2430.12598, 54.7561188, -249.377075)
-        wait(_G.AutoWaitCandyCorn)
-        tp(2423.53857, 54.7007103, -278.175812)
-        tp(2423.53857, 54.7007103, -278.175812)
-        wait(_G.AutoWaitCandyCorn)
-        tp(2411.71069, 54.8853149, -321.054352)
-        tp(2411.71069, 54.8853149, -321.054352)
-        wait(_G.AutoWaitCandyCorn)
-        tp(2422.92163, 54.7007103, -342.319061)
-        tp(2422.92163, 54.7007103, -342.319061)
-        wait(_G.AutoWaitCandyCorn)
-        tp(2464.25977, 55.2407112, -337.885223) -- Bypass Tp 
+        tp(2547.08691, 54.7007103, -204.918289)
         wait(0.3)
-        tp(2493.09473, 54.7617378, -340.128845)
-        tp(2493.09473, 54.7617378, -340.128845)
-        wait(_G.AutoWaitCandyCorn)
-        tp(2514.07886, 54.7007103, -321.738281) -- Bypass Tp 
+        tp(2518.271, 54.7007103, -216.139694)
         wait(0.3)
-        tp(2536.16162, 54.8662071, -324.277557)
-        tp(2536.16162, 54.8662071, -324.277557)
+        tp(2490.47998, 54.7007103, -226.962311)
+        wait(0.3)
+        tp(2465.63354, 55.2007103, -238.937241)
+        wait(0.3)
+        -- First House 
+        tp(2429.50586, 54.930336, -248.200836)
+        wait(0.2)
+        tp(2426.20996, 54.7007103, -248.569351)
         wait(_G.AutoWaitCandyCorn)
-        tp(2565.07837, 54.9797211, -322.230652)
-        tp(2565.07837, 54.9797211, -322.230652)
-        wait(4)
+        -- Second House 
+        tp(2419.36206, 54.7328949, -275.171265)
+        wait(0.2)
+        tp(2416.82739, 54.820118, -276.740387)
+        wait(_G.AutoWaitCandyCorn)
+        -- Bypass Teleport
+        tp(2425.68921, 54.7007103, -313.782288)
+        wait(0.3)
+        -- Third House 
+        tp(2409.00317, 55.1096649, -319.122589)
+        wait(0.2)
+        tp(2406.69995, 54.7510948, -319.744293)
+        wait(_G.AutoWaitCandyCorn)
+        -- Fourth House 
+        tp(2418.03931, 54.7007103, -342.695923)
+        wait(0.2)
+        tp(2421.33594, 54.832428, -345.991272)
+        wait(_G.AutoWaitCandyCorn)
+        -- Bypass Tp 
+        tp(2450.83301, 55.7007103, -343.400726)
+        wait(0.3)
+        tp(2468.44092, 55.2007103, -341.548889)
+        -- Fifth House 
+        tp(2491.08032, 54.7007103, -339.639648)
+        wait(0.2)
+        tp(2492.66479, 54.7007103, -343.334351)
+        wait(_G.AutoWaitCandyCorn)
+        -- Bypass Tp 
+        tp(2505.70923, 54.7007103, -317.222351)
+        wait(0.3)
+        --Sixth House
+        tp(2535.39429, 54.717598, -323.287811)
+        wait(0.2)
+        tp(2538.76953, 54.8958931, -325.782928)
+        wait(_G.AutoWaitCandyCorn)
+        -- Seventh House
+        tp(2564.58643, 55.0678062, -319.776001)
+        wait(0.2)
+        tp(2561.26123, 54.7007103, -322.590118)
+        wait(0.2)
+        tp(2565.20654, 55.1203613, -323.587494)
+        wait(_G.AutoWaitCandyCorn)
     end
 end)
 
@@ -308,22 +333,11 @@ AAD:addDropdown("Pick which place to sell at ( Must own )",{"Candy Land","Beach 
     end
 end)
 
--- Teleport Page 
-local TP = UI:addPage("Teleports")
-local TPS = TP:addSection("Teleports only one for now cause i was to lazy")
-
-TPS:addButton("Halloween Area / Event Area",function()
-    local v3 = "Teleport"
-    local v4 = "EventSpawn"
-    local rem = game:GetService("ReplicatedStorage").NetworkRemoteEvent
-    rem:FireServer(v3, v4)
-    wait(0.001)
-end)
 
 -- Pet stuff 
-local PT = UI:addPage("Item Stuff")
+local PT = UI:addPage("Auto Open")
 local PTE = PT:addSection("Auto Open Eggs/Crates ( make sure to be near the egg )")
-local DeleteYep = PT:addSection("Auto Delete Pets for eggs ( Check Auto Delete Settings )")
+local PTE3 = PT:addSection("Auto Open 3 Eggs/Crates ( make sure to be near the egg ")
 PTE:addDropdown("Pick a Egg/Crate",eggs,function(value)
     _G.EggValue = value
 end)
@@ -343,32 +357,41 @@ PTE:addSlider("Auto Open Delay",0,0,10,function(value)
     _G.EggDelayValue = value
 end)
 
-DeleteYep:addToggle("Auto Delete Commons",false,function(value)
-    local v1 = "AutoDelete"
-    local v2 = "Common"
-    local rem = game:GetService("ReplicatedStorage").NetworkRemoteEvent
-    rem:FireServer(v1,v2)
+PTE3:addDropdown("Auto Open Egg/Crate",egg3,function(value)
+    _G.EggValue3 = value
+end) 
+
+PTE3:addToggle("Auto Open Egg/Crate",false,function(value)
+    _G.AutoOpen3Egg = value
+    while _G.AutoOpen3Egg do 
+        local v1 = "PurchaseEgg"
+        local v2 = _G.EggValue3
+        local v3 = three
+        local rem = game:GetService("ReplicatedStorage").NetworkRemoteEvent
+        rem:FireServer(v1,v2,v3)
+        wait(_G.EggDelayValue3)
+    end
 end)
 
-DeleteYep:addToggle("Auto Delete Uniques",false,function(value)
-    local v1 = "AutoDelete"
-    local v2 = "Unique"
-    local rem = game:GetService("ReplicatedStorage").NetworkRemoteEvent
-    rem:FireServer(v1,v2)
+PTE3:addSlider("Auto Open Delay",0,0,10,function(value)
+    _G.EggDelayValue3 = value
 end)
 
-DeleteYep:addToggle("Auto Delete Rares",false,function(value)
-    local v1 = "AutoDelete"
-    local v2 = "Rare"
-    local rem = game:GetService("ReplicatedStorage").NetworkRemoteEvent
-    rem:FireServer(v1,v2)
-end)
 
-DeleteYep:addToggle("Auto Delete Epics",false,function(value)
-    local v1 = "AutoDelete"
-    local v2 = "Epic"
-    local rem = game:GetService("ReplicatedStorage").NetworkRemoteEvent
-    rem:FireServer(v1,v2)
+
+-- MISC Page
+local MISC = UI:addPage(" Misc Stuff")
+local MiscSection = MISC:addSection("Miscellaneous")
+
+MiscSection:addButton("Unlock All Islands",function()
+    for i,v in pairs(game:GetService("Workspace").FloatingIslands:GetChildren()) do 
+        if #v:GetChildren() > 0 then 
+            for i,v in pairs(v:GetChildren()) do 
+                game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame = v.Collision.CFrame
+                wait(1)
+            end
+        end
+    end
 end)
 
 -- Settings Page
@@ -407,4 +430,4 @@ game.StarterGui:SetCore("SendNotification",{
 })
 
 UI:SelectPage(UI.pages[1],true)
-UI:Notify("Make sure to complete all the options before using the autofarm all feature and auto candy corn","Also using the dropdowns might crash if you delete one letter lol and when your done using a autofarm feature, toggle it off and wait for it to be done. Also default toggle to hide the gui is rightshift")
+UI:Notify("Make sure to complete all the options before using the autofarm all feature and auto candy corn","Also using the dropdowns might crash if you delete one letter lol and when your done using a autofarm feature, toggle it off and wait for it to be done. Default toggle to hide the gui is rightshift")
