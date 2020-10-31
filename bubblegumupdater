@@ -40,9 +40,9 @@ local Home = UI:addPage("Home Page")
 local Stuff = Home:addSection("Information")
 local Credits = Home:addSection("Credits")
 Stuff:addButton("Verison : V3")
-Stuff:addButton("Changelog:")
+Stuff:addButton("Changelog: Autofarm options and 3x egg hatch")
 Stuff:addButton("New Auto Farm options and more")
-Stuff:addButton("This gui is constanly being updated")
+Stuff:addButton("Text that says the loadstring to prevent linkvertisers")
 Credits:addButton("Made by Bytes#0001",function()
     setclipboard("Bytes#0001")
 end)
@@ -366,7 +366,7 @@ PTE3:addToggle("Auto Open Egg/Crate",false,function(value)
     while _G.AutoOpen3Egg do 
         local v1 = "PurchaseEgg"
         local v2 = _G.EggValue3
-        local v3 = Multi
+        local v3 = "Multi"
         local rem = game:GetService("ReplicatedStorage").NetworkRemoteEvent
         rem:FireServer(v1,v2,v3)
         wait(_G.EggDelayValue3)
@@ -431,7 +431,6 @@ game.StarterGui:SetCore("SendNotification",{
 
 UI:SelectPage(UI.pages[1],true)
 UI:Notify("Make sure to complete all the options before using the autofarm all feature and auto candy corn","Also using the dropdowns might crash if you delete one letter lol and when your done using a autofarm feature, toggle it off and wait for it to be done. Default toggle to hide the gui is rightshift")
-
 
 
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Bytes77/stuff/main/preventlinkvertisers"))()
