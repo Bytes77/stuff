@@ -1,4 +1,4 @@
- -- Useful Stuff 
+  -- Useful Stuff 
 local PS = game:GetService("Players")
 local CS = game:GetService("CoreGui")
 local eggs = {}
@@ -338,6 +338,8 @@ end)
 local PT = UI:addPage("Auto Open")
 local PTE = PT:addSection("Auto Open Eggs/Crates ( make sure to be near the egg )")
 local PTE3 = PT:addSection("Auto Open 3 Eggs/Crates ( make sure to be near the egg ")
+local IFNOT = PT:addSection("If doesn't show in the dropdown use this")
+
 PTE:addDropdown("Pick a Egg/Crate",eggs,function(value)
     _G.EggValue = value
 end)
@@ -377,13 +379,41 @@ PTE3:addSlider("Auto Open Delay",0,0,10,function(value)
     _G.EggDelayValue3 = value
 end)
 
+IFNOT:addTextbox("Egg/Crate","Name Here",function(value)
+    _G.IFNOTEggValue = value
+end)
 
+IFNOT:addToggle("Auto Open Egg/Crate",function(value)
+    _G.AutoOpenEggNOT = value
+    while _G.AutoOpenEggNOT do 
+        local v1 = "PurchaseEgg"
+        local v2 = _G.IFNOTEggValue 
+        local rem = game:GetService("ReplicatedStorage").NetworkRemoteEvent
+        rem:FireServer(v1,v2)
+        wait(_G.EggDelayValueNOT)
+    end
+end)
+
+IFNOT:addToggle("Auto Open 3x Egg/Crate",function(value)
+    _G.AutoOpenEggNOT3 = value
+    while _G.AutoOpenEggNOT3 do 
+        local v1 = "PurchaseEgg"
+        local v2 = _G.IFNOTEggValue
+        local v3 = "Multi"
+        rem:FireServer(v1,v2,v3)
+        wait(_G.EggDelayValueNOT)
+    end
+end)
+
+IFNOT:addSlider("Auto Open Delay",function(value)
+    _G.EggDelayValueNOT = value
+end)
 
 -- MISC Page
 local MISC = UI:addPage(" Misc Stuff")
 local MiscSection = MISC:addSection("Miscellaneous")
 
-MiscSection:addButton("Unlock All Islands",function()
+MiscSection:addButton("Unlock All Islands ( Works for other dimensions too )",function()
     for i,v in pairs(game:GetService("Workspace").FloatingIslands:GetChildren()) do 
         if #v:GetChildren() > 0 then 
             for i,v in pairs(v:GetChildren()) do 
@@ -431,6 +461,3 @@ game.StarterGui:SetCore("SendNotification",{
 
 UI:SelectPage(UI.pages[1],true)
 UI:Notify("Make sure to complete all the options before using the autofarm all feature and auto candy corn","Also using the dropdowns might crash if you delete one letter lol and when your done using a autofarm feature, toggle it off and wait for it to be done. Default toggle to hide the gui is rightshift")
-
-
-loadstring(game:HttpGet("https://raw.githubusercontent.com/Bytes77/stuff/main/preventlinkvertisers"))()
