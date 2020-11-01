@@ -338,7 +338,7 @@ end)
 local PT = UI:addPage("Auto Open")
 local PTE = PT:addSection("Auto Open Eggs/Crates ( make sure to be near the egg )")
 local PTE3 = PT:addSection("Auto Open 3 Eggs/Crates ( make sure to be near the egg ")
-local IFNOT = PT:addSection("If doesn't show in the dropdown use this")
+
 
 PTE:addDropdown("Pick a Egg/Crate",eggs,function(value)
     _G.EggValue = value
@@ -377,36 +377,6 @@ end)
 
 PTE3:addSlider("Auto Open Delay",0,0,10,function(value)
     _G.EggDelayValue3 = value
-end)
-
-IFNOT:addTextbox("Egg/Crate","Name Here",function(value)
-    _G.IFNOTEggValue = value
-end)
-
-IFNOT:addToggle("Auto Open Egg/Crate",function(value)
-    _G.AutoOpenEggNOT = value
-    while _G.AutoOpenEggNOT do 
-        local v1 = "PurchaseEgg"
-        local v2 = _G.IFNOTEggValue 
-        local rem = game:GetService("ReplicatedStorage").NetworkRemoteEvent
-        rem:FireServer(v1,v2)
-        wait(_G.EggDelayValueNOT)
-    end
-end)
-
-IFNOT:addToggle("Auto Open 3x Egg/Crate",function(value)
-    _G.AutoOpenEggNOT3 = value
-    while _G.AutoOpenEggNOT3 do 
-        local v1 = "PurchaseEgg"
-        local v2 = _G.IFNOTEggValue
-        local v3 = "Multi"
-        rem:FireServer(v1,v2,v3)
-        wait(_G.EggDelayValueNOT)
-    end
-end)
-
-IFNOT:addSlider("Auto Open Delay",function(value)
-    _G.EggDelayValueNOT = value
 end)
 
 -- MISC Page
