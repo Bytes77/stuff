@@ -89,7 +89,7 @@ PMISC:addToggle("Spam Chat",false,function(value)
     end
 end)
 
-PMISC:addButton("DIE",function()
+PMISC:addButton("Respawn",function()
     PS.LocalPlayer.Character.Humanoid.Health = 0 
     warn("DIED :c")
 end)
