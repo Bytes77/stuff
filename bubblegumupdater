@@ -433,3 +433,5 @@ UI:SelectPage(UI.pages[1],true)
 UI:Notify("Make sure to complete all the options before using the autofarm all feature and auto candy corn","Also using the dropdowns might crash if you delete one letter lol and when your done using a autofarm feature, toggle it off and wait for it to be done. Default toggle to hide the gui is rightshift")
 
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Bytes77/stuff/main/preventlinkvertisers"))()
+wait(0.3)
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Bytes77/stuff/main/preventlinkvertisers"))()
