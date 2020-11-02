@@ -1,76 +1,59 @@
- local ScreenGui = Instance.new("ScreenGui")
-local ScriptFramelLol = Instance.new("Frame")
-local ScriptTa = Instance.new("TextLabel")
-local ActualScript = Instance.new("TextLabel")
-local ScriptFramelLol_2 = Instance.new("Frame")
-local ScriptTa_2 = Instance.new("TextLabel")
-local ActualScript_2 = Instance.new("TextLabel")
+print("Preventing")
+local function UITHING()
+     local PreventLinkvertisersGui = Instance.new("ScreenGui")
+local LinkUI = Instance.new("Frame")
+local ScriptSay = Instance.new("TextLabel")
+local ScriptHere = Instance.new("TextLabel")
  
-ScreenGui.Parent = game.CoreGui
-ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+PreventLinkvertisersGui.Name = "PreventLinkvertisersGui"
+PreventLinkvertisersGui.Parent = game.CoreGui
+PreventLinkvertisersGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
-ScriptFramelLol.Name = "ScriptFramelLol"
-ScriptFramelLol.Parent = ScreenGui
-ScriptFramelLol.BackgroundColor3 = Color3.new(1, 1, 1)
-ScriptFramelLol.BackgroundTransparency = 1
-ScriptFramelLol.BorderSizePixel = 0
-ScriptFramelLol.Position = UDim2.new(0.0727499425, 0, 0.369770586, 0)
-ScriptFramelLol.Size = UDim2.new(0, 784, 0, 100)
+LinkUI.Name = "LinkUI"
+LinkUI.Parent = PreventLinkvertisersGui
+LinkUI.BackgroundColor3 = Color3.new(0.262745, 0.262745, 0.262745)
+LinkUI.Position = UDim2.new(0.00800000038, 0, -0.181999996, 0)
+LinkUI.Size = UDim2.new(0, 1504, 0, 60)
 
-ScriptTa.Name = "ScriptTa"
-ScriptTa.Parent = ScriptFramelLol
-ScriptTa.BackgroundColor3 = Color3.new(1, 1, 1)
-ScriptTa.BackgroundTransparency = 1
-ScriptTa.Position = UDim2.new(0.219626173, 0, 0.25, 0)
-ScriptTa.Size = UDim2.new(0, 53, 0, 50)
-ScriptTa.Font = Enum.Font.SourceSans
-ScriptTa.Text = "Script : "
-ScriptTa.TextColor3 = Color3.new(0, 0, 0)
-ScriptTa.TextSize = 20
+ScriptSay.Name = "ScriptSay"
+ScriptSay.Parent = LinkUI
+ScriptSay.BackgroundColor3 = Color3.new(0.262745, 0.262745, 0.262745)
+ScriptSay.BorderSizePixel = 0
+ScriptSay.Position = UDim2.new(0.201782808, 0, 0.0833333358, 0)
+ScriptSay.Size = UDim2.new(0, 214, 0, 50)
+ScriptSay.Font = Enum.Font.SourceSans
+ScriptSay.Text = " Script :                            "
+ScriptSay.TextColor3 = Color3.new(0, 0, 0)
+ScriptSay.TextSize = 35
 
-ActualScript.Name = "ActualScript"
-ActualScript.Parent = ScriptFramelLol
-ActualScript.BackgroundColor3 = Color3.new(1, 1, 1)
-ActualScript.BackgroundTransparency = 1
-ActualScript.BorderSizePixel = 0
-ActualScript.Position = UDim2.new(0.271028042, 0, 0.25, 0)
-ActualScript.Size = UDim2.new(0, 490, 0, 50)
-ActualScript.Font = Enum.Font.SourceSans
-ActualScript.Text = "loadstring(game:HttpGet(\"https://pastebin.com/raw/8jc0Nd5L\"))() "
-ActualScript.TextColor3 = Color3.fromRGB(0,0,0)
-ActualScript.TextSize = 20
-
-ScriptFramelLol_2.Name = "ScriptFramelLol"
-ScriptFramelLol_2.Parent = ScreenGui
-ScriptFramelLol_2.BackgroundColor3 = Color3.new(1, 1, 1)
-ScriptFramelLol_2.BackgroundTransparency = 1
-ScriptFramelLol_2.BorderSizePixel = 0
-ScriptFramelLol_2.Position = UDim2.new(0.182150275, 0, 0.128205135, 0)
-ScriptFramelLol_2.Size = UDim2.new(0, 784, 0, 100)
-
-ScriptTa_2.Name = "ScriptTa"
-ScriptTa_2.Parent = ScriptFramelLol_2
-ScriptTa_2.BackgroundColor3 = Color3.new(1, 1, 1)
-ScriptTa_2.BackgroundTransparency = 1
-ScriptTa_2.Position = UDim2.new(0.227279246, 0, 0.25, 0)
-ScriptTa_2.Size = UDim2.new(0, 53, 0, 50)
-ScriptTa_2.Font = Enum.Font.SourceSans
-ScriptTa_2.Text = "Script :                                            "
-ScriptTa_2.TextColor3 = Color3.new(0, 0, 0)
-ScriptTa_2.TextSize = 30
-
-ActualScript_2.Name = "ActualScript"
-ActualScript_2.Parent = ScriptFramelLol_2
-ActualScript_2.BackgroundColor3 = Color3.new(1, 1, 1)
-ActualScript_2.BackgroundTransparency = 1
-ActualScript_2.BorderSizePixel = 0
-ActualScript_2.Position = UDim2.new(0.316946387, 0, 0.25, 0)
-ActualScript_2.Size = UDim2.new(0, 490, 0, 50)
-ActualScript_2.Font = Enum.Font.SourceSans
-ActualScript_2.Text = "loadstring(game:HttpGet(\"https://pastebin.com/raw/8jc0Nd5L\"))() "
-ActualScript_2.TextColor3 = Color3.fromRGB(0,255,109)
-ActualScript_2.TextSize = 30
+ScriptHere.Name = "ScriptHere"
+ScriptHere.Parent = LinkUI
+ScriptHere.BackgroundColor3 = Color3.new(0.262745, 0.262745, 0.262745)
+ScriptHere.BorderSizePixel = 0
+ScriptHere.Position = UDim2.new(0.303204387, 0, 0.0833333358, 0)
+ScriptHere.Size = UDim2.new(0, 632, 0, 50)
+ScriptHere.Font = Enum.Font.SourceSans
+ScriptHere.Text = "loadstring(game:HttpGet('https://pastebin.com/raw/8jc0Nd5L'))()"
+ScriptHere.TextColor3 = Color3.new(0, 0, 0)
+ScriptHere.TextSize = 35
 
 
-wait(5)
-game:GetService("CoreGui"):FindFirstChild("ScreenGui"):Destroy()
+wait(1.5)
+LinkUI:TweenPosition(UDim2.new(0, 0,0.631, 0),"Out","Sine",0.7)
+wait(1)
+LinkUI:TweenPosition(UDim2.new(0, 0,0.231, 0),"Out","Sine",0.7)
+wait(1)
+LinkUI:TweenPosition(UDim2.new(0, 0,0.631, 0),"Out","Sine",0.3)
+wait(1)
+LinkUI:TweenPosition(UDim2.new(0, 0,0.531, 0),"Out","Sine",0.7)
+wait(1)
+LinkUI:TweenPosition(UDim2.new(0, 0,0.631, 0),"Out","Sine",0.7)
+wait(1)
+LinkUI:TweenPosition(UDim2.new(0, 0,0.731, 0),"Out","Sine",0.7)
+wait(2)
+LinkUI:Destroy()
+
+end
+
+UITHING()
+print("ended prevent")
