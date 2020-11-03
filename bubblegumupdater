@@ -39,6 +39,7 @@ local themes = {
 local Home = UI:addPage("Home Page")
 local Stuff = Home:addSection("Information")
 local Credits = Home:addSection("Credits")
+local Tester = Home:addSection("Tester")
 Stuff:addButton("Verison : V3")
 Stuff:addButton("Changelog: Autofarm options and 3x egg hatch")
 Stuff:addButton("New Auto Farm options and more")
@@ -52,6 +53,13 @@ Credits:addButton("Discord Invite : https://discord.gg/pHx3xdp",function()
 end)
 
 Credits:addButton("UI Library : Venyx")
+
+Tester:addButton("To become a tester join our discord server")
+Tester:addButton("6 our of 10 more slots left")
+Tester:addButton("Tester ? Sign in",function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Bytes77/stuff/main/TesterLoader"))()
+    print("Loaded Log In")
+end)
 
 -- Player Page 
 local LP = UI:addPage("Local Player")
@@ -89,7 +97,7 @@ PMISC:addToggle("Spam Chat",false,function(value)
     end
 end)
 
-PMISC:addButton("Respawn",function()
+PMISC:addButton("DIE",function()
     PS.LocalPlayer.Character.Humanoid.Health = 0 
     warn("DIED :c")
 end)
@@ -126,7 +134,7 @@ AFS:addToggle("Auto Candy Corn",false,function(value)
     local plr = game.Players.LocalPlayer
     local tween_s = game:service"TweenService";
     local info = TweenInfo.new(_G.CandyCornHouseSpeed,Enum.EasingStyle.Sine);
-    function tp(...)
+    local function tp(...)
       local tic_k = tick();
       local params = {...};
       local cframe = CFrame.new(params[1],params[2],params[3]);
@@ -204,7 +212,7 @@ AFS:addToggle("Auto Farm All  ( Toggle Auto Bubbles for this ) ",false,function(
     local plr = game.Players.LocalPlayer
     local tween_s = game:service"TweenService";
     local info = TweenInfo.new(_G.AutoFarmCandyCornSpeed,Enum.EasingStyle.Sine);
-    function tp(...)
+    local function tp(...)
       local tic_k = tick();
       local params = {...};
       local cframe = CFrame.new(params[1],params[2],params[3]);
@@ -338,7 +346,7 @@ end)
 local PT = UI:addPage("Auto Open")
 local PTE = PT:addSection("Auto Open Eggs/Crates ( make sure to be near the egg )")
 local PTE3 = PT:addSection("Auto Open 3 Eggs/Crates ( make sure to be near the egg ")
-
+local StuffPet = PT:addSection("Misc")
 
 PTE:addDropdown("Pick a Egg/Crate",eggs,function(value)
     _G.EggValue = value
@@ -378,6 +386,7 @@ end)
 PTE3:addSlider("Auto Open Delay",0,0,10,function(value)
     _G.EggDelayValue3 = value
 end)
+
 
 -- MISC Page
 local MISC = UI:addPage(" Misc Stuff")
