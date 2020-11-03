@@ -1,0 +1,6 @@
+game.StarterGui:SetCore("SendNotification",{
+Title = "None yet";
+Text = "no private scripts to use yet";
+Duration = 10;
+})
+warn("No script yet")
