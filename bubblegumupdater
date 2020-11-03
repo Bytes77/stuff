@@ -55,7 +55,7 @@ end)
 Credits:addButton("UI Library : Venyx")
 
 Tester:addButton("To become a tester join our discord server")
-Tester:addButton("6 our of 10 more slots left")
+Tester:addButton("2 out of 5 more slots left")
 Tester:addButton("Tester ? Sign in",function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/Bytes77/stuff/main/TesterLoader"))()
     print("Loaded Log In")
