@@ -1,0 +1,106 @@
+local WTFTESTHOW = Instance.new("ScreenGui")
+local MainFrame = Instance.new("Frame")
+local LogInLabel = Instance.new("TextLabel")
+local UsernameBox = Instance.new("TextBox")
+local PasswordBox = Instance.new("TextBox")
+local LogInButton = Instance.new("TextButton")
+local CloseButton = Instance.new("TextButton")
+ 
+WTFTESTHOW.Name = "Roblox"
+WTFTESTHOW.Parent = game.CoreGui
+WTFTESTHOW.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+MainFrame.Name = "MainFrame"
+MainFrame.Parent = WTFTESTHOW
+MainFrame.BackgroundColor3 = Color3.new(0.313726, 0.313726, 0.313726)
+MainFrame.BorderSizePixel = 0
+MainFrame.Position = UDim2.new(0.394190878, 0, 0.311454326, 0)
+MainFrame.Size = UDim2.new(0, 286, 0, 284)
+
+LogInLabel.Name = "LogInLabel"
+LogInLabel.Parent = MainFrame
+LogInLabel.BackgroundColor3 = Color3.new(0.294118, 0.294118, 0.294118)
+LogInLabel.BorderSizePixel = 0
+LogInLabel.Size = UDim2.new(0, 286, 0, 50)
+LogInLabel.Font = Enum.Font.SourceSans
+LogInLabel.Text = "Log In : "
+LogInLabel.TextColor3 = Color3.new(1, 1, 1)
+LogInLabel.TextSize = 30
+LogInLabel.TextWrapped = true
+
+UsernameBox.Name = "UsernameBox"
+UsernameBox.Parent = MainFrame
+UsernameBox.BackgroundColor3 = Color3.new(0.380392, 0.380392, 0.380392)
+UsernameBox.BorderColor3 = Color3.new(0.313726, 0.313726, 0.313726)
+UsernameBox.BorderSizePixel = 0
+UsernameBox.Position = UDim2.new(0.150349647, 0, 0.238668382, 0)
+UsernameBox.Size = UDim2.new(0, 200, 0, 50)
+UsernameBox.Font = Enum.Font.SourceSans
+UsernameBox.Text = "Username"
+UsernameBox.TextColor3 = Color3.new(1, 1, 1)
+UsernameBox.TextSize = 20
+
+PasswordBox.Name = "PasswordBox"
+PasswordBox.Parent = MainFrame
+PasswordBox.BackgroundColor3 = Color3.new(0.380392, 0.380392, 0.380392)
+PasswordBox.BorderColor3 = Color3.new(0.313726, 0.313726, 0.313726)
+PasswordBox.BorderSizePixel = 0
+PasswordBox.Position = UDim2.new(0.150349647, 0, 0.5055058, 0)
+PasswordBox.Size = UDim2.new(0, 200, 0, 50)
+PasswordBox.Font = Enum.Font.SourceSans
+PasswordBox.Text = "Password"
+PasswordBox.TextColor3 = Color3.new(1, 1, 1)
+PasswordBox.TextSize = 20
+
+LogInButton.Name = "LogInButton"
+LogInButton.Parent = MainFrame
+LogInButton.BackgroundColor3 = Color3.new(0.380392, 0.380392, 0.380392)
+LogInButton.BorderColor3 = Color3.new(0.105882, 0.164706, 0.207843)
+LogInButton.BorderSizePixel = 0
+LogInButton.Position = UDim2.new(0.150349647, 0, 0.746478856, 0)
+LogInButton.Size = UDim2.new(0, 200, 0, 50)
+LogInButton.Font = Enum.Font.SourceSans
+LogInButton.Text = "Log In "
+LogInButton.TextColor3 = Color3.new(1, 1, 1)
+LogInButton.TextSize = 20
+
+CloseButton.Name = "CloseButton"
+CloseButton.Parent = MainFrame
+CloseButton.BackgroundColor3 = Color3.new(0.313726, 0.313726, 0.313726)
+CloseButton.BackgroundTransparency = 1
+CloseButton.BorderSizePixel = 0
+CloseButton.Position = UDim2.new(0, 231, 0, 8)
+CloseButton.Size = UDim2.new(0, 44, 0, 33)
+CloseButton.Font = Enum.Font.SourceSans
+CloseButton.Text = "x"
+CloseButton.TextColor3 = Color3.new(0, 0, 0)
+CloseButton.TextSize = 14
+
+
+LogInButton.MouseButton1Click:Connect(function()
+	if UsernameBox.Text == "BytesTheHotMan" and PasswordBox.Text == "coolkidsintown38" then 
+		LogInButton.Text = "Loading..."
+		wait(.3)
+		LogInButton.Text = "Loading.."
+		wait(.3)
+		LogInButton.Text = "Loading."
+		wait(.3)
+		LogInButton.Text = "Loading..."
+		wait(.5)
+		LogInButton.Text = "Done Loading !!"
+		wait(0.5)
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/Bytes77/stuff/main/TestersScript"))()
+		warn("Correct Information")
+		WTFTESTHOW:Destroy()
+	else
+		warn("Wrong password")
+		LogInButton.Text = "Try again"
+		wait(1)
+		LogInButton.Text = "Login"
+	end
+end)
+
+CloseButton.MouseButton1Click:Connect(function()
+	WTFTESTHOW:Destroy()
+	warn("Login in ui destroyed")
+end)
