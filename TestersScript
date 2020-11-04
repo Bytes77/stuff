@@ -1,6 +1,257 @@
-game.StarterGui:SetCore("SendNotification",{
-Title = "None yet";
-Text = "no private scripts to use yet";
-Duration = 10;
-})
-warn("No script yet")
+ local plr = game.Players.LocalPlayer
+    local tween_s = game:service"TweenService";
+    local info = TweenInfo.new(4,Enum.EasingStyle.Sine);
+    local function tp(...)
+      local tic_k = tick();
+      local params = {...};
+      local cframe = CFrame.new(params[1],params[2],params[3]);
+      local tween,err = pcall(function()
+          local tween = tween_s:Create(plr.Character["HumanoidRootPart"],info,{CFrame=cframe});
+          tween:Play();
+      end)
+      if not tween then return err end
+end
+
+
+-- Varaibles 
+local PS = game:GetService("Players")
+local CS = game:GetService("CoreGui")
+
+-- Tables
+local eggs = {}
+for i,v in pairs(workspace.Eggs:GetChildren()) do 
+    if not table.find(eggs,v.Name) then 
+        table.insert(eggs,v.Name)
+    end
+end
+
+-- Check Replication 
+local BubbleREP = CS:FindFirstChild("Bubble Gum Simulator V4")
+if BubbleREP then BubbleREP:Destroy() end 
+
+-- Bubble Gum Simulator
+local GUI = loadstring(game:HttpGet("https://pastebin.com/raw/qwdPKKDN"))()
+local UI = GUI.new("Bubble Gum Simulator V4")
+
+-- Themes 
+local themes = {
+    Background = Color3.fromRGB(24,24,24),
+    Glow = Color3.fromRGB(0,0,0),
+    Accent = Color3.fromRGB(10,10,10),
+    LightContrast = Color3.fromRGB(20,20,20),
+    DarkContrast = Color3.fromRGB(14,14,14),
+    TextColor = Color3.fromRGB(255,255,255)
+}
+
+-- Home Page 
+local Home = UI:addPage("Home",5012544693)
+local Stuff = Home:addSection("Information")
+local Credits = Home:addSection("Credits")
+local Tester = Home:addSection("Tester")
+Stuff:addButton("Verison : V4")
+Stuff:addButton("Changelog : ")
+Stuff:addButton("New layout and more")
+Credits:addButton("Made by Bytes#0001",function()
+    setclipboard("Bytes#0001")
+end)
+Credits:addButton("Discord Invite : https://discord.gg/pHx3xdp",function()
+    setclipboard("https://discord.gg/pHx3xdp")
+    game.StarterGui:SetCore("SendNotification",{Title = "Copied to clipboard";Text = "If your a synapse user it should have copied to your clipboard";Duration = 5;})
+end)
+Credits:addButton("UI Library : Venyx")
+
+Tester:addButton("To become a tester join our discord server")
+Tester:addButton("6 our of 10 more slots left")
+Tester:addButton("Tester ? Sign in",function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Bytes77/stuff/main/TesterLoader"))()
+end)
+
+-- Player Page 
+local LP = UI:addPage("Local",5012544693)
+local mods = LP:addSection("Player Modifications")
+local miscmods = LP:addSection("Miscellaneous")
+
+mods:addSlider("WalkSpeed",16,16,500,function(value)
+    _G.SpeedValue = value
+end)
+
+mods:addSlider("Jump Power",50,50,15000,function(value)
+    _G.JumpValue = value
+end)
+
+mods:addButton("Set WalkSpeed and Jump Power",function()
+    PS.LocalPlayer.Character.Humanoid.WalkSpeed = _G.SpeedValue
+    PS.LocalPlayer.Character.Humanoid.JumpPower = _G.JumpValue
+    warn("WalkSpeed and Jump Power executed")
+end)
+
+miscmods:addTextbox("Spam Value","Text Here",function(value)
+    _G.SpamValue = value
+end)
+
+miscmods:addToggle("Spam Chat",false,function(value)
+    _G.SpamChat = value
+    while _G.SpamChat do 
+        local v1 = _G.SpamValue
+        local v2 = "All"
+        local rem = game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest
+        rem:FireServer(v1,v2)
+        wait(0.1)
+    end
+end)
+
+miscmods:addButton("Respawn",function()
+    PS.LocalPlayer.Character.Humanoid.Health = 0 
+    warn("Died")
+end)
+
+-- Auto Farm Page 
+local Farm = UI:addPage("Farm",5012544693)
+local AutoFarm = Farm:addSection("Auto Farm")
+local BasicOptions = Farm:addSection("Basic Auto Farm Options")
+
+AutoFarm:addToggle("Auto Blow Bubbles",false,function(value)
+    _G.AutoBubbles = value
+    while _G.AutoBubbles do 
+        local v1 = "BlowBubble"
+        local rem = game:GetService("ReplicatedStorage").NetworkRemoteEvent
+        rem:FireServer(v1)
+        wait(_G.DelayAutoBubbles)
+    end
+end)
+
+AutoFarm:addToggle("Auto Sell Bubbles",false,function(value)
+    _G.AutoSellBubbles = value
+    while _G.AutoSellBubbles do
+        local v1 = "Teleport"
+        local v2 = "Sell"
+        local rem = game:GetService("ReplicatedStorage").NetworkRemoteEvent
+        rem:FireServer(v1,v2)
+        wait(_G.DelayAutoSell)
+    end
+end)
+
+AutoFarm:addToggle("Auto Coin Frame ( not the best )",false,function(value)
+    _G.AutoCoinFrame = value
+    while _G.AutoCoinFrame do 
+        tp(66.164238, 45.6000061, -339.604431)
+        wait(1)
+        tp(66.3308868, 45.0608444, -195.988083)
+        wait(1)
+        tp(79.1344986, 45.6502113, -192.09169)
+        wait(1)
+        tp(92.2144852, 45.6018906, -281.075714)
+        wait(1)
+        tp(96.2517929, 45.6000061, -335.343079)
+        wait(1)
+        tp(105.618759, 45.6000061, -337.961029)
+        wait(1)
+        tp(105.662964, 45.601902, -298.730164)
+        wait(1)
+        tp(118.683647, 45.6019135, -295.448822)
+        wait(1)
+        tp(121.562958, 45.6486473, -270.286316)
+        wait(1)
+        tp(112.377357, 48.8585968, -224.951523)
+        wait(2)
+    end
+end)
+
+AutoFarm:addButton("Sell Bubbles",function() 
+    local v1 = "Teleport"
+    local v2 = "Sell"
+    local rem = game:GetService("ReplicatedStorage").NetworkRemoteEvent
+    rem:FireServer(v1,v2)
+end)
+
+-- Options 
+
+BasicOptions:addSlider("Auto Blow Bubbles Delay",0,0,100,function(value)
+    _G.DelayAutoBubbles = value
+end)
+
+BasicOptions:addSlider("Auto Sell Bubbles Delay",0,0,100,function(value)
+    _G.DelayAutoSell = value
+end)
+
+-- Auto Open 
+local Open = UI:addPage("Open",5012544693)
+local AutoOpen = Open:addSection("Auto Open Eggs/Crates ( Must be near the egg )")
+
+AutoOpen:addDropdown("Pick a egg/crate",eggs,function(value)
+    _G.EggValue = value
+end)
+
+AutoOpen:addToggle("Auto Open Egg/Crate",false,function(value)
+    _G.AutoOpenEggCrate = value
+    while _G.AutoOpenEggCrate do 
+        local v1 = "PurchaseEgg"
+        local v2 = _G.EggValue
+        local rem = game:GetService("ReplicatedStorage").NetworkRemoteEvent
+        rem:FireServer(v1,v2)
+        wait(_G.EggDelayValue)
+    end
+end)
+
+AutoOpen:addToggle("Multi Open Egg/Crate",false,function(value)
+    _G.MultiOpenEggCrate = value
+    while _G.MultiOpenEggCrate do
+        local v1 = "PurchaseEgg"
+        local v2 = _G.EggValue
+        local v3 = "Multi"
+        local rem = game:GetService("ReplicatedStorage").NetworkRemoteEvent
+        rem:FireServer(v1,v2,v3)
+        wait(_G.EggDelayValue)
+    end
+end)
+
+AutoOpen:addSlider("Open Delay",0,0,10,function(value)
+    _G.EggDelayValue = value
+end)
+
+-- Misc Page
+local Misc = UI:addPage("Miscs",5012544693)
+local MiscSection = Misc:addSection("Miscellaneous")
+
+MiscSection:addButton("Unlock All Islands ( Works for other dimensions too )",function()
+    for i,v in pairs(game:GetService("Workspace").FloatingIslands:GetChildren()) do 
+        if #v:GetChildren() > 0 then 
+            for i,v in pairs(v:GetChildren()) do 
+                game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").CFrame = v.Collision.CFrame
+                wait(1)
+            end
+        end
+    end
+end)
+
+MiscSection:addToggle("Auto Spin Wheel",false,function(value)
+    _G.AutoSpinWheel = value
+    while _G.AutoSpinWheel do 
+        local v1 = "SpinToWin"
+        local rem = game:GetService("ReplicatedStorage").NetworkRemoteEvent
+        rem:FireServer(v1)
+        wait(0.3)
+    end
+end)
+
+-- Settings 
+
+local Settings = UI:addPage("GUI",5012544693)
+local ThemeE = Settings:addSection("Themes")
+local ToggleGui = Settings:addSection("Toggle GUI")
+local DestroyGui = Settings:addSection("Destroy GUI")
+
+for theme,color in pairs(themes) do 
+ThemeE:addColorPicker(theme,color,function(color3)
+UI:setTheme(theme,color3)
+end)
+end
+
+ToggleGui:addKeybind("Toggle GUI",Enum.KeyCode.RightShift,function()
+    UI:toggle()
+end, function()
+end)
+
+DestroyGui:addButton("Destroy GUI",function()
+    CS:FindFirstChild("Bubble Gum Simulator V4"):Destroy()
+end)
