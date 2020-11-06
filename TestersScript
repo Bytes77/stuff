@@ -1,23 +1,7 @@
- local plr = game.Players.LocalPlayer
-    local tween_s = game:service"TweenService";
-    local info = TweenInfo.new(4,Enum.EasingStyle.Sine);
-    local function tp(...)
-      local tic_k = tick();
-      local params = {...};
-      local cframe = CFrame.new(params[1],params[2],params[3]);
-      local tween,err = pcall(function()
-          local tween = tween_s:Create(plr.Character["HumanoidRootPart"],info,{CFrame=cframe});
-          tween:Play();
-      end)
-      if not tween then return err end
-end
-
-
--- Varaibles 
-local PS = game:GetService("Players")
+ local PS = game:GetService("Players")
 local CS = game:GetService("CoreGui")
-
--- Tables
+local BubbleREP = CS:FindFirstChild("MadMaxx")
+if BubbleREP then BubbleREP:Destroy() print("Removed Replica") end 
 local eggs = {}
 for i,v in pairs(workspace.Eggs:GetChildren()) do 
     if not table.find(eggs,v.Name) then 
@@ -25,16 +9,11 @@ for i,v in pairs(workspace.Eggs:GetChildren()) do
     end
 end
 
--- Check Replication 
-local BubbleREP = CS:FindFirstChild("Bubble Gum Simulator V4")
-if BubbleREP then BubbleREP:Destroy() end 
-
--- Bubble Gum Simulator
+-- Bubble Gum Simulator 
 local GUI = loadstring(game:HttpGet("https://pastebin.com/raw/qwdPKKDN"))()
-local UI = GUI.new("Bubble Gum Simulator V4")
-
--- Themes 
-local themes = {
+local UI = GUI.new("MadMaxx")
+-- themes 
+themes = {
     Background = Color3.fromRGB(24,24,24),
     Glow = Color3.fromRGB(0,0,0),
     Accent = Color3.fromRGB(10,10,10),
@@ -45,140 +24,157 @@ local themes = {
 
 -- Home Page 
 local Home = UI:addPage("Home",5012544693)
-local Stuff = Home:addSection("Information")
+local Info = Home:addSection("Information")
 local Credits = Home:addSection("Credits")
 local Tester = Home:addSection("Tester")
-Stuff:addButton("Verison : V4")
-Stuff:addButton("Changelog : ")
-Stuff:addButton("New layout and more")
-Credits:addButton("Made by Bytes#0001",function()
-    setclipboard("Bytes#0001")
-end)
-Credits:addButton("Discord Invite : https://discord.gg/pHx3xdp",function()
-    setclipboard("https://discord.gg/pHx3xdp")
-    game.StarterGui:SetCore("SendNotification",{Title = "Copied to clipboard";Text = "If your a synapse user it should have copied to your clipboard";Duration = 5;})
-end)
-Credits:addButton("UI Library : Venyx")
+local ReadMe = Home:addSection("READ ME")
 
+Info:addButton("Verison : V4")
+Info:addButton("Changelog : ")
+Info:addButton("New layout and more")
+Credits:addButton("Made by Bytes#0001 and ureReady#0001",function() setclipboard("Bytes#0001 ureReady#0001")  print("Bytes#0001","ureReady#0001") end)
+Credits:addButton("Discord Invite : https://discord.gg/mUeDZhbW79",function() setclipboard("https://discord.gg/mUeDZhbW79") end)
+Credits:addButton("UI Library : Venyx")
 Tester:addButton("To become a tester join our discord server")
-Tester:addButton("6 our of 10 more slots left")
+Tester:addButton("2 out of 5 more slots left")
 Tester:addButton("Tester ? Sign in",function()
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/Bytes77/stuff/main/TesterLoader"))()
+    print("Um yes")
 end)
+ReadMe:addButton("When using any auto farm features")
+ReadMe:addButton("make sure to complete its options first")
+ReadMe:addButton("Dropdowns might make you crash because of a ui problem")
+ReadMe:addButton("Make sure to be near the egg/crate before opening it")
+ReadMe:addButton("Multi Hatching requires the multi gamepass")
+ReadMe:addButton("Report any bugs in the discord server")
 
 -- Player Page 
 local LP = UI:addPage("Local",5012544693)
-local mods = LP:addSection("Player Modifications")
-local miscmods = LP:addSection("Miscellaneous")
+local PMODS = LP:addSection("Player Modifications")
+local PMISC = LP:addSection("Miscellaneous")
 
-mods:addSlider("WalkSpeed",16,16,500,function(value)
+PMODS:addSlider("WalkSpeed",16,16,450,function(value)
     _G.SpeedValue = value
 end)
-
-mods:addSlider("Jump Power",50,50,15000,function(value)
+PMODS:addSlider("Jump Power",50,50,15000,function(value)
     _G.JumpValue = value
 end)
-
-mods:addButton("Set WalkSpeed and Jump Power",function()
+PMODS:addButton("Set Walkspeed and Jump Power",function()
     PS.LocalPlayer.Character.Humanoid.WalkSpeed = _G.SpeedValue
     PS.LocalPlayer.Character.Humanoid.JumpPower = _G.JumpValue
-    warn("WalkSpeed and Jump Power executed")
-end)
+    print("WalkSpeed and Jump Power Setted")
+end)    
 
-miscmods:addTextbox("Spam Value","Text Here",function(value)
+PMISC:addTextbox("Spam Value","Text Here",function(value)
     _G.SpamValue = value
 end)
 
-miscmods:addToggle("Spam Chat",false,function(value)
+PMISC:addToggle("Spam Chat",false,function(value)
     _G.SpamChat = value
     while _G.SpamChat do 
         local v1 = _G.SpamValue
         local v2 = "All"
         local rem = game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest
         rem:FireServer(v1,v2)
-        wait(0.1)
+        wait(_G.SpamChatDelay)
     end
 end)
 
-miscmods:addButton("Respawn",function()
-    PS.LocalPlayer.Character.Humanoid.Health = 0 
-    warn("Died")
+PMISC:addSlider("Spam Chat Delay",0,0,10,function(value)
+    _G.SpamChatDelay = value
 end)
 
--- Auto Farm Page 
+PMISC:addToggle("Anti Afk",false,function(value)
+    _G.AntiAfkLoop = value
+    while _G.AntiAfkLoop do 
+        local VirtualUser = game:GetService("VirtualUser")
+        game.Players.LocalPlayer.Idled:Connect(function()
+        VirtualUser:CaptureController()
+        VirtualUser:ClickButton2(Vector2.new())
+        end)
+        print("Anti Afk Has Ran")
+        wait(0.2)
+    end
+end)
+
+
+-- Farm Page
 local Farm = UI:addPage("Farm",5012544693)
 local AutoFarm = Farm:addSection("Auto Farm")
-local BasicOptions = Farm:addSection("Basic Auto Farm Options")
+local AutoDrops = Farm:addSection("Auto Drops 👀")
+local AutoOptions = Farm:addSection("Auto Farm Options")
 
 AutoFarm:addToggle("Auto Blow Bubbles",false,function(value)
-    _G.AutoBubbles = value
-    while _G.AutoBubbles do 
+    _G.AutoBlowBubbles = value
+    while _G.AutoBlowBubbles do 
         local v1 = "BlowBubble"
         local rem = game:GetService("ReplicatedStorage").NetworkRemoteEvent
         rem:FireServer(v1)
-        wait(_G.DelayAutoBubbles)
+        wait(_G.AutoBlowBubblesDelay)
     end
 end)
 
 AutoFarm:addToggle("Auto Sell Bubbles",false,function(value)
     _G.AutoSellBubbles = value
-    while _G.AutoSellBubbles do
+    while _G.AutoSellBubbles do 
         local v1 = "Teleport"
         local v2 = "Sell"
         local rem = game:GetService("ReplicatedStorage").NetworkRemoteEvent
         rem:FireServer(v1,v2)
-        wait(_G.DelayAutoSell)
+        wait(_G.AutoSellBubblesDelay)
     end
 end)
 
-AutoFarm:addToggle("Auto Coin Frame ( not the best )",false,function(value)
-    _G.AutoCoinFrame = value
-    while _G.AutoCoinFrame do 
-        tp(66.164238, 45.6000061, -339.604431)
-        wait(1)
-        tp(66.3308868, 45.0608444, -195.988083)
-        wait(1)
-        tp(79.1344986, 45.6502113, -192.09169)
-        wait(1)
-        tp(92.2144852, 45.6018906, -281.075714)
-        wait(1)
-        tp(96.2517929, 45.6000061, -335.343079)
-        wait(1)
-        tp(105.618759, 45.6000061, -337.961029)
-        wait(1)
-        tp(105.662964, 45.601902, -298.730164)
-        wait(1)
-        tp(118.683647, 45.6019135, -295.448822)
-        wait(1)
-        tp(121.562958, 45.6486473, -270.286316)
-        wait(1)
-        tp(112.377357, 48.8585968, -224.951523)
+
+AutoFarm:addToggle("Auto Collect Chest",false,function(value)
+    _G.AutoCollectChest = value
+    while _G.AutoCollectChest do 
+        local HRP = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart
+        HRP.CFrame = game:GetService("Workspace").FloatingIslands.Overworld["The Floating Island"].Collision.CFrame
+        wait(5)
+        local v1 = "CollectChestReward"
+        local v2 = "The Floating Island"
+        local rem = game:GetService("ReplicatedStorage").NetworkRemoteEvent
+        rem:FireServer(v1, v2) 
+        wait(3)
+        HRP.CFrame = game:GetService("Workspace").FloatingIslands.Overworld["The Skylands"].Collision.CFrame
+        wait(5)
+        local v1 = "CollectChestReward"
+        local v2 = "The Skylands"
+        local rem = game:GetService("ReplicatedStorage").NetworkRemoteEvent
+        rem:FireServer(v1, v2)
         wait(2)
+        HRP.CFrame = game:GetService("Workspace").FloatingIslands.Overworld["The Void"].Collision.CFrame
+        wait(5)
+        local v1 = "CollectChestReward"
+        local v2 = "The Void"
+        local rem = game:GetService("ReplicatedStorage").NetworkRemoteEvent
+        rem:FireServer(v1, v2)
+        wait(7)
+        local v1 = "TeleportToADoor"
+        local v2 = "The Void"
+        local rem = game:GetService("ReplicatedStorage").NetworkRemoteEvent
+        rem:FireServer(v1, v2)
+        wait(_G.AutoCollectChestDelay)
     end
 end)
 
-AutoFarm:addButton("Sell Bubbles",function() 
-    local v1 = "Teleport"
-    local v2 = "Sell"
-    local rem = game:GetService("ReplicatedStorage").NetworkRemoteEvent
-    rem:FireServer(v1,v2)
+AutoOptions:addSlider("Auto Blow Bubbles Delay",0,0,100,function(value)
+    _G.AutoBlowBubblesDelay = value
 end)
 
--- Options 
-
-BasicOptions:addSlider("Auto Blow Bubbles Delay",0,0,100,function(value)
-    _G.DelayAutoBubbles = value
+AutoOptions:addSlider("Auto Sell Bubbles Delay",0,0,100,function(value)
+    _G.AutoSellBubblesDelay = value
 end)
 
-BasicOptions:addSlider("Auto Sell Bubbles Delay",0,0,100,function(value)
-    _G.DelayAutoSell = value
+AutoOptions:addSlider("Auto Collect Chest Delay",0,0,100,function(value)
+    _G.AutoCollectChestDelay = value
 end)
 
 -- Auto Open 
-local Open = UI:addPage("Open",5012544693)
-local AutoOpen = Open:addSection("Auto Open Eggs/Crates ( Must be near the egg )")
+local OpenS = UI:addPage("Open",5012544693)
+local AutoOpen = OpenS:addSection("Auto Open Egg/Crate ( Must be near it )")
 
-AutoOpen:addDropdown("Pick a egg/crate",eggs,function(value)
+AutoOpen:addDropdown("Pick a Egg/Crate",eggs,function(value)
     _G.EggValue = value
 end)
 
@@ -189,31 +185,70 @@ AutoOpen:addToggle("Auto Open Egg/Crate",false,function(value)
         local v2 = _G.EggValue
         local rem = game:GetService("ReplicatedStorage").NetworkRemoteEvent
         rem:FireServer(v1,v2)
-        wait(_G.EggDelayValue)
+        wait(_G.EggDelay)
     end
 end)
 
 AutoOpen:addToggle("Multi Open Egg/Crate",false,function(value)
     _G.MultiOpenEggCrate = value
-    while _G.MultiOpenEggCrate do
+    while _G.MultiOpenEggCrate do 
         local v1 = "PurchaseEgg"
         local v2 = _G.EggValue
         local v3 = "Multi"
         local rem = game:GetService("ReplicatedStorage").NetworkRemoteEvent
         rem:FireServer(v1,v2,v3)
-        wait(_G.EggDelayValue)
+        wait(_G.EggDelay)
     end
 end)
 
-AutoOpen:addSlider("Open Delay",0,0,10,function(value)
-    _G.EggDelayValue = value
+AutoOpen:addSlider("Auto Open Delay",0,0,10,function(value)
+    _G.EggDelay = value
 end)
 
--- Misc Page
+-- Misc 
 local Misc = UI:addPage("Miscs",5012544693)
-local MiscSection = Misc:addSection("Miscellaneous")
+local MiscStuff = Misc:addSection("Misccellaneous")
 
-MiscSection:addButton("Unlock All Islands ( Works for other dimensions too )",function()
+MiscStuff:addToggle("Auto Spin Wheel",false,function(value)
+    _G.AutoSpinWheel = value
+    while _G.AutoSpinWheel do 
+        local v1 = "SpinToWin"
+        local rem = game:GetService("ReplicatedStorage").NetworkRemoteEvent
+        rem:FireServer(v1)
+        wait(0.2)
+    end
+end)
+
+MiscStuff:addToggle("Auto Claim Daily Rewards",false,function(value)
+    _G.AutoClaimDailyRewards = value
+    while _G.AutoClaimDailyRewards do 
+        local v1 = "ClaimDailyReward"
+        local rem = game:GetService("ReplicatedStorage").NetworkRemoteEvent
+        rem:FireServer(v1)
+        wait(0.2)
+    end
+end)
+
+MiscStuff:addToggle("Auto Claim Group Reward",false,function(value)
+    _G.AutoClaimGroupReward = value
+    while _G.AutoClaimGroupReward do 
+        local v1 = "CollectGroupReward"
+        local rem = game:GetService("ReplicatedStorage").NetworkRemoteFunction
+        rem:InvokeServer(v1)
+        wait(0.2)
+    end
+end)
+
+MiscStuff:addDropdown("Teleports",{"The Floating Island"},function(value)
+    if value == "The Floating Island" then 
+        local v1 = "TeleportToCheckpoint"
+        local v2 = "The Floating Island"
+        local rem = game:GetService("ReplicatedStorage").NetworkRemoteEvent
+        rem:FireServer(v1, v2)
+    end
+end)
+
+MiscStuff:addButton("Unlock All Islands ( Works for other dimensions too )",function()
     for i,v in pairs(game:GetService("Workspace").FloatingIslands:GetChildren()) do 
         if #v:GetChildren() > 0 then 
             for i,v in pairs(v:GetChildren()) do 
@@ -224,22 +259,14 @@ MiscSection:addButton("Unlock All Islands ( Works for other dimensions too )",fu
     end
 end)
 
-MiscSection:addToggle("Auto Spin Wheel",false,function(value)
-    _G.AutoSpinWheel = value
-    while _G.AutoSpinWheel do 
-        local v1 = "SpinToWin"
-        local rem = game:GetService("ReplicatedStorage").NetworkRemoteEvent
-        rem:FireServer(v1)
-        wait(0.3)
-    end
+MiscStuff:addButton("FPS Boost ( not mine )",function()
+    loadstring(game:HttpGet("https://pastebin.com/raw/Unv2KtpJ"))()
+    print("Boosted")
 end)
 
--- Settings 
-
-local Settings = UI:addPage("GUI",5012544693)
-local ThemeE = Settings:addSection("Themes")
-local ToggleGui = Settings:addSection("Toggle GUI")
-local DestroyGui = Settings:addSection("Destroy GUI")
+local ThemeE = Misc:addSection("Themes")
+local ToggleGui = Misc:addSection("Toggle GUI")
+local DestroyGui = Misc:addSection("Destroy GUI")
 
 for theme,color in pairs(themes) do 
 ThemeE:addColorPicker(theme,color,function(color3)
@@ -253,5 +280,18 @@ end, function()
 end)
 
 DestroyGui:addButton("Destroy GUI",function()
-    CS:FindFirstChild("Bubble Gum Simulator V4"):Destroy()
+    CS:FindFirstChild("MadMaxx"):Destroy()
 end)
+
+UI:SelectPage(UI.pages[1],true)
+
+local VirtualUser = game:GetService("VirtualUser")
+game.Players.LocalPlayer.Idled:Connect(function()
+VirtualUser:CaptureController()
+VirtualUser:ClickButton2(Vector2.new())
+end)
+print("Anti Afk Has Ran")
+
+game.StarterGui:SetCore("ChatMakeSystemMessage",{
+    Text = "Make sure to join the discord server for updates and more";
+})
