@@ -128,6 +128,7 @@ LogInButton.MouseButton1Click:Connect(function()
 		wait(0.3)
 		Loginbuttonlabel.Text = "Loading."
 		wait(1.5)
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/Bytes77/stuff/main/TestersScript"))()
 		ScreenThing:Destroy()
 	else 
 		print("Wrong Information")
