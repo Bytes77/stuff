@@ -1,106 +1,138 @@
-local WTFTESTHOW = Instance.new("ScreenGui")
-local MainFrame = Instance.new("Frame")
-local LogInLabel = Instance.new("TextLabel")
-local UsernameBox = Instance.new("TextBox")
-local PasswordBox = Instance.new("TextBox")
-local LogInButton = Instance.new("TextButton")
-local CloseButton = Instance.new("TextButton")
+ if game:GetService("CoreGui"):FindFirstChild("ScreenThing") then game:GetService("CoreGui"):FindFirstChild("ScreenThing"):Destroy() end 
+
+
+local ScreenThing = Instance.new("ScreenGui")
+local LogInFrame = Instance.new("ImageButton")
+local TesterLoginLabel = Instance.new("TextLabel")
+local UsernameInput = Instance.new("ImageButton")
+local UsernameInputBox = Instance.new("TextBox")
+local PasswordInput = Instance.new("ImageButton")
+local PassowordInputBox = Instance.new("TextBox")
+local LogInButton = Instance.new("ImageButton")
+local Loginbuttonlabel = Instance.new("TextLabel")
  
-WTFTESTHOW.Name = "Roblox"
-WTFTESTHOW.Parent = game.CoreGui
-WTFTESTHOW.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+ScreenThing.Name = "ScreenThing"
+ScreenThing.Parent = game.CoreGui
+ScreenThing.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
-MainFrame.Name = "MainFrame"
-MainFrame.Parent = WTFTESTHOW
-MainFrame.BackgroundColor3 = Color3.new(0.313726, 0.313726, 0.313726)
-MainFrame.BorderSizePixel = 0
-MainFrame.Position = UDim2.new(0.394190878, 0, 0.311454326, 0)
-MainFrame.Size = UDim2.new(0, 286, 0, 284)
+LogInFrame.Name = "LogInFrame"
+LogInFrame.Parent = ScreenThing
+LogInFrame.BackgroundColor3 = Color3.new(0.137255, 0.137255, 0.137255)
+LogInFrame.BackgroundTransparency = 1
+LogInFrame.Position = UDim2.new(0.329623282, 0, 0.190402478, 0)
+LogInFrame.Size = UDim2.new(0, 398, 0, 400)
+LogInFrame.Image = "rbxassetid://2790389767"
+LogInFrame.ImageColor3 = Color3.new(0.137255, 0.137255, 0.137255)
+LogInFrame.ScaleType = Enum.ScaleType.Slice
+LogInFrame.SliceCenter = Rect.new(8, 8, 248, 248)
 
-LogInLabel.Name = "LogInLabel"
-LogInLabel.Parent = MainFrame
-LogInLabel.BackgroundColor3 = Color3.new(0.294118, 0.294118, 0.294118)
-LogInLabel.BorderSizePixel = 0
-LogInLabel.Size = UDim2.new(0, 286, 0, 50)
-LogInLabel.Font = Enum.Font.SourceSans
-LogInLabel.Text = "Log In : "
-LogInLabel.TextColor3 = Color3.new(1, 1, 1)
-LogInLabel.TextSize = 30
-LogInLabel.TextWrapped = true
+TesterLoginLabel.Name = "TesterLoginLabel"
+TesterLoginLabel.Parent = LogInFrame
+TesterLoginLabel.BackgroundColor3 = Color3.new(1, 1, 1)
+TesterLoginLabel.BackgroundTransparency = 1
+TesterLoginLabel.BorderSizePixel = 0
+TesterLoginLabel.Position = UDim2.new(0.173567891, 0, 0.136498481, 0)
+TesterLoginLabel.Size = UDim2.new(0, 252, 0, 50)
+TesterLoginLabel.Font = Enum.Font.Gotham
+TesterLoginLabel.Text = "Tester Login"
+TesterLoginLabel.TextColor3 = Color3.new(1, 1, 1)
+TesterLoginLabel.TextSize = 20
+TesterLoginLabel.TextWrapped = true
 
-UsernameBox.Name = "UsernameBox"
-UsernameBox.Parent = MainFrame
-UsernameBox.BackgroundColor3 = Color3.new(0.380392, 0.380392, 0.380392)
-UsernameBox.BorderColor3 = Color3.new(0.313726, 0.313726, 0.313726)
-UsernameBox.BorderSizePixel = 0
-UsernameBox.Position = UDim2.new(0.150349647, 0, 0.238668382, 0)
-UsernameBox.Size = UDim2.new(0, 200, 0, 50)
-UsernameBox.Font = Enum.Font.SourceSans
-UsernameBox.Text = "Username"
-UsernameBox.TextColor3 = Color3.new(1, 1, 1)
-UsernameBox.TextSize = 20
+UsernameInput.Name = "UsernameInput"
+UsernameInput.Parent = LogInFrame
+UsernameInput.BackgroundColor3 = Color3.new(0.164706, 0.164706, 0.164706)
+UsernameInput.BackgroundTransparency = 1
+UsernameInput.Position = UDim2.new(0.175879404, 0, 0.341246307, 0)
+UsernameInput.Size = UDim2.new(0, 258, 0, 44)
+UsernameInput.Image = "rbxassetid://2790371148"
+UsernameInput.ImageColor3 = Color3.new(0.184314, 0.184314, 0.184314)
+UsernameInput.ScaleType = Enum.ScaleType.Slice
+UsernameInput.SliceCenter = Rect.new(32, 32, 224, 224)
 
-PasswordBox.Name = "PasswordBox"
-PasswordBox.Parent = MainFrame
-PasswordBox.BackgroundColor3 = Color3.new(0.380392, 0.380392, 0.380392)
-PasswordBox.BorderColor3 = Color3.new(0.313726, 0.313726, 0.313726)
-PasswordBox.BorderSizePixel = 0
-PasswordBox.Position = UDim2.new(0.150349647, 0, 0.5055058, 0)
-PasswordBox.Size = UDim2.new(0, 200, 0, 50)
-PasswordBox.Font = Enum.Font.SourceSans
-PasswordBox.Text = "Password"
-PasswordBox.TextColor3 = Color3.new(1, 1, 1)
-PasswordBox.TextSize = 20
+UsernameInputBox.Name = "UsernameInputBox"
+UsernameInputBox.Parent = UsernameInput
+UsernameInputBox.BackgroundColor3 = Color3.new(1, 1, 1)
+UsernameInputBox.BackgroundTransparency = 1
+UsernameInputBox.Position = UDim2.new(0.11198768, 0, 0, 0)
+UsernameInputBox.Size = UDim2.new(0, 200, 0, 44)
+UsernameInputBox.Font = Enum.Font.GothamSemibold
+UsernameInputBox.Text = "Username"
+UsernameInputBox.TextColor3 = Color3.new(1, 1, 1)
+UsernameInputBox.TextSize = 13
+
+PasswordInput.Name = "PasswordInput"
+PasswordInput.Parent = LogInFrame
+PasswordInput.BackgroundColor3 = Color3.new(0.164706, 0.164706, 0.164706)
+PasswordInput.BackgroundTransparency = 1
+PasswordInput.Position = UDim2.new(0.175879404, 0, 0.560830891, 0)
+PasswordInput.Size = UDim2.new(0, 258, 0, 44)
+PasswordInput.Image = "rbxassetid://2790371148"
+PasswordInput.ImageColor3 = Color3.new(0.184314, 0.184314, 0.184314)
+PasswordInput.ScaleType = Enum.ScaleType.Slice
+PasswordInput.SliceCenter = Rect.new(32, 32, 224, 224)
+
+PassowordInputBox.Name = "PassowordInputBox"
+PassowordInputBox.Parent = PasswordInput
+PassowordInputBox.BackgroundColor3 = Color3.new(1, 1, 1)
+PassowordInputBox.BackgroundTransparency = 1
+PassowordInputBox.Position = UDim2.new(0.11198768, 0, 0, 0)
+PassowordInputBox.Size = UDim2.new(0, 200, 0, 44)
+PassowordInputBox.Font = Enum.Font.GothamSemibold
+PassowordInputBox.Text = "Password"
+PassowordInputBox.TextColor3 = Color3.new(1, 1, 1)
+PassowordInputBox.TextSize = 13
 
 LogInButton.Name = "LogInButton"
-LogInButton.Parent = MainFrame
-LogInButton.BackgroundColor3 = Color3.new(0.380392, 0.380392, 0.380392)
-LogInButton.BorderColor3 = Color3.new(0.105882, 0.164706, 0.207843)
-LogInButton.BorderSizePixel = 0
-LogInButton.Position = UDim2.new(0.150349647, 0, 0.746478856, 0)
-LogInButton.Size = UDim2.new(0, 200, 0, 50)
-LogInButton.Font = Enum.Font.SourceSans
-LogInButton.Text = "Log In "
-LogInButton.TextColor3 = Color3.new(1, 1, 1)
-LogInButton.TextSize = 20
+LogInButton.Parent = LogInFrame
+LogInButton.BackgroundColor3 = Color3.new(0.666667, 0, 1)
+LogInButton.BackgroundTransparency = 1
+LogInButton.Position = UDim2.new(0.175879404, 0, 0.7744807, 0)
+LogInButton.Size = UDim2.new(0, 258, 0, 40)
+LogInButton.Image = "rbxassetid://2790390993"
+LogInButton.ImageColor3 = Color3.new(0.133333, 0.235294, 0.403922)
+LogInButton.ScaleType = Enum.ScaleType.Slice
+LogInButton.SliceCenter = Rect.new(16, 16, 240, 240)
 
-CloseButton.Name = "CloseButton"
-CloseButton.Parent = MainFrame
-CloseButton.BackgroundColor3 = Color3.new(0.313726, 0.313726, 0.313726)
-CloseButton.BackgroundTransparency = 1
-CloseButton.BorderSizePixel = 0
-CloseButton.Position = UDim2.new(0, 231, 0, 8)
-CloseButton.Size = UDim2.new(0, 44, 0, 33)
-CloseButton.Font = Enum.Font.SourceSans
-CloseButton.Text = "x"
-CloseButton.TextColor3 = Color3.new(0, 0, 0)
-CloseButton.TextSize = 14
-
+Loginbuttonlabel.Name = "Loginbuttonlabel"
+Loginbuttonlabel.Parent = LogInButton
+Loginbuttonlabel.AnchorPoint = Vector2.new(0.5, 0.5)
+Loginbuttonlabel.BackgroundColor3 = Color3.new(1, 1, 1)
+Loginbuttonlabel.BackgroundTransparency = 1
+Loginbuttonlabel.BorderSizePixel = 0
+Loginbuttonlabel.Position = UDim2.new(0.50999999, 0, 0.49999994, 0)
+Loginbuttonlabel.Size = UDim2.new(1, -5, 1, -5)
+Loginbuttonlabel.Font = Enum.Font.GothamSemibold
+Loginbuttonlabel.Text = "Log In"
+Loginbuttonlabel.TextColor3 = Color3.new(1, 1, 1)
+Loginbuttonlabel.TextSize = 14
 
 LogInButton.MouseButton1Click:Connect(function()
-	if UsernameBox.Text == "BytesTheHotMan" and PasswordBox.Text == "coolkidsintown38" then 
-		LogInButton.Text = "Loading..."
-		wait(.3)
-		LogInButton.Text = "Loading.."
-		wait(.3)
-		LogInButton.Text = "Loading."
-		wait(.3)
-		LogInButton.Text = "Loading..."
-		wait(.5)
-		LogInButton.Text = "Done Loading !!"
-		wait(0.5)
-		loadstring(game:HttpGet("https://raw.githubusercontent.com/Bytes77/stuff/main/TestersScript"))()
-		warn("Correct Information")
-		WTFTESTHOW:Destroy()
-	else
-		warn("Wrong password")
-		LogInButton.Text = "Try again"
-		wait(1)
-		LogInButton.Text = "Login"
-	end
+	print(UsernameInputBox.Text)
+	print(PassowordInputBox.Text)
 end)
 
-CloseButton.MouseButton1Click:Connect(function()
-	WTFTESTHOW:Destroy()
-	warn("Login in ui destroyed")
+LogInButton.MouseButton1Click:Connect(function()
+	if UsernameInputBox.Text == "BytesTheFytes" and PassowordInputBox.Text == "CoolBoysInTown38" then 
+		warn("Correct Information Please Wait")
+		warn("Loading")
+		Loginbuttonlabel.Text = "Loading..."
+		wait(0.3)
+		Loginbuttonlabel.Text = "Loading.."
+		wait(0.3)
+		Loginbuttonlabel.Text = "Loading."
+		wait(0.3)
+		Loginbuttonlabel.Text = "Loading..."
+		wait(0.3)
+		Loginbuttonlabel.Text = "Loading.."
+		wait(0.3)
+		Loginbuttonlabel.Text = "Loading."
+		wait(1.5)
+		ScreenThing:Destroy()
+	else 
+		print("Wrong Information")
+		Loginbuttonlabel.Text = "Try again"
+		wait(1.1)
+		ScreenThing:Destroy()
+	end
 end)
