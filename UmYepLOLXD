@@ -1,1 +1,1 @@
-print("Yep")
+game.Players.LocalPlayer:kick("Lol")
